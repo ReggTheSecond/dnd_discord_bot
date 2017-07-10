@@ -92,10 +92,3 @@ class Character
     return "Name: #{@character_name}\nRace: #{@race}\nClass: #{@character_class}\nStrength: #{@strength}\nConstitution: #{@constitution}\nDexterity: #{@dexterity}\nIntelligence: #{@intelligence}\nWisdom: #{@wisdom}\nCharisma: #{@charisma}"
   end
 end
-
-jim = Character.new()
-
-jim.character_name = "Jim"
-jim.race = "Elf"
-jim.character_class = "Figher"
-puts jim.to_string()
