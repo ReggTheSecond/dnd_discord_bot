@@ -1,3 +1,10 @@
 dndiscord-1: A player should be able to recall their character sheet.
 dndiscord-2: A player should be able to recall specific information from their character sheet e.g. Maximium hit points, level, race, class, attribute scores, bonuses to specific skills.
-dnd
+dndiscord-3: Return the details to of spells specific characters e.g. Fireball, Wish.
+dndiscord-4: Return the details of class or race specific traits relating to a specific characters.
+dndiscord-5: Return a list of items held by a specific character.
+dndiscord-6: Return current encumberance of a specific character.
+dndiscord-7: Return the max encumberance of a specific character.
+dndiscord-8: Return the currently equipped items of a specific character.
+dndiscord-9: Return the currently attuned items of a specific character.
+dndiscord-10: 
