@@ -1,7 +1,11 @@
+require_relative 'skills.rb'
+require_relative 'classes.rb'
+
 class Character
   attr_accessor :character_name
   attr_accessor :race
   attr_accessor :character_class
+  attr_accessor :class_archetype
   attr_accessor :alighnment
   attr_accessor :experience
   attr_accessor :strength
@@ -22,9 +26,18 @@ class Character
   attr_accessor :head_slot
   attr_accessor :attuned_item_one
   attr_accessor :attuned_item_two
+  attr_accessor :proficiency
+  attr_accessor :expertise
+
+  attr_accessor :classes
+  attr_accessor :skills
 
   def initialize()
     roll_stats()
+    @proficiency = Array.new()
+    @expertise = Array.new()
+    @classes = Classes.new()
+    @skills = Skills.new()
   end
 
   def roll_stats()
@@ -88,7 +101,118 @@ class Character
     end
   end
 
+  def roll_skill(skill)
+    rnd = Random.new()
+    if is_proficient(skill)
+      if is_expert(skill)
+        roll_total = rnd.rand(1..20) + (proficiency_bonus() * 2) + attribute_bonus(skill)
+      else
+        roll_total = rnd.rand(1..20) + proficiency_bonus() + attribute_bonus(skill)
+      end
+    else
+      roll_total = rnd.rand(1..20) + attribute_bonus(skill)
+    end
+    return roll_total
+  end
+
+  def proficiency_bonus()
+    if @experience <= 2700
+      return 2
+    elsif @experience <= 34000
+      return 3
+    elsif @experience <= 100000
+      return 4
+    elsif @experience <= 195000
+      return 5
+    else
+      return 6
+    end
+  end
+
+  def attribute_bonus(skill)
+    attribute = @skills.attribute_for_skill(skill.downcase)
+    case attribute.downcase()
+    when "strength"
+      attribute_score = @strength
+    when "constitution"
+      attribute_score = @constitution
+    when "dexterity"
+      attribute_score = @dexterity
+    when "intelligence"
+      attribute_score = @intelligence
+    when "wisdom"
+      attribute_score = @wisdom
+    when "charisma"
+      attribute_score = @charisma
+    end
+
+    if attribute_score > 10
+      attribute_score = (attribute_score - 10) / 2
+    elsif attribute_score == 10
+      attribute_score = 0
+    else
+      attribute_score = attribute_score / 2
+      attribute_score = attribute_score - (attribute_score + 1)
+    end
+    return attribute_score
+  end
+
+  def add_class(character_class)
+    if classes.is_a_class(character_class.downcase)
+      @character_class = character_class
+    end
+  end
+
+  def add_proficiency(proficiency)
+    if @skills.is_a_skill(proficiency.downcase)
+      @proficiency << proficiency.downcase
+    end
+  end
+
+  def is_proficient(skill)
+    return @proficiency.include?(skill.downcase)
+  end
+
+  def add_expertise(expertise)
+    if @skills.is_a_skill(expertise.downcase)
+      if is_proficient(expertise)
+        @expertise << expertise.downcase
+      end
+    end
+  end
+
+  def is_expert(skill)
+    return @expertise.include?(skill.downcase)
+  end
+
+  def save_to_csv()
+    character_sheet = File.open("data/characters/#{character_name}", 'a+')
+    character_sheet << "#{@character_name}~#{@race}~#{@character_class}~#{@experience}~#{@strength}~#{@constitution}~#{@dexterity}~#{@intelligence}~#{@wisdom}~#{@charisma}~#{@proficiency}~#{@expertise}"
+    character_sheet.close()
+  end
+
+  def load_character(character_name)
+    character_sheet = File.open("data/characters/#{character_name}", 'r')
+    character_sheet.each_line() do |line|
+      character = line.split("~")
+    end
+
+  end
+
   def to_string()
     return "Name: #{@character_name}\nRace: #{@race}\nClass: #{@character_class}\nStrength: #{@strength}\nConstitution: #{@constitution}\nDexterity: #{@dexterity}\nIntelligence: #{@intelligence}\nWisdom: #{@wisdom}\nCharisma: #{@charisma}"
   end
 end
+
+relg = Character.new()
+relg.character_name = "Relg"
+relg.race = "Dwarf"
+relg.add_class("Monk")
+relg.experience = 1300
+relg.add_proficiency("History")
+relg.add_expertise("History")
+relg.add_proficiency("Perception")
+relg.roll_stats
+puts relg.to_string()
+relg.save_to_csv()
+puts "Roll #{relg.roll_skill("History")}"
