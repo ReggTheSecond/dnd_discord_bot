@@ -226,6 +226,7 @@ class Character
 
   def load_character(character_name)
     character_sheet = File.open("data/characters/#{character_name.downcase}.csv", 'r')
+    temp_skills = ""
     character_sheet.each_line() do |line|
       if line.include?("character_name~")
         @character_name = line.split("~").last().strip()
@@ -236,9 +237,25 @@ class Character
       elsif line.include?("class_archetype~")
         @class_archetype = line.split("~").last().strip()
       elsif line.include?("proficiency~")
-        @proficiency = line.split("~").last().strip()
+        temp_skills = line.split("\"]").first().split("[\"").last()
+        if temp_skills.include?("\", \"")
+          skills = temp_skills.split("\", \"")
+          skills.each() do |skill|
+            add_proficiency(skill)
+          end
+        else
+          add_proficiency(temp_skills)
+        end
       elsif line.include?("expertise~")
-        @expertise = line.split("~").last().strip()
+        temp_skills = line.split("\"]").first().split("[\"").last()
+        if temp_skills.include?("\", \"")
+          skills = temp_skills.split("\", \"")
+          skills.each() do |skill|
+            add_expertise(skill)
+          end
+        else
+          add_expertise(temp_skills)
+        end
       elsif line.include?("alighnment~")
         @alighnment = line.split("~").last().strip()
       elsif line.include?("experience~")
@@ -294,7 +311,6 @@ end
 
 relg = Character.new()
 relg.load_character("relg")
-puts relg.roll_skill("History")
 # relg.character_name = "Relg"
 # relg.race = "Dwarf"
 # relg.add_class("Monk")
