@@ -19,14 +19,6 @@ class Weapon < Item
     super()
   end
 
-  def set_special(special)
-    if special == "lance" || special == "net"
-      @special = special
-    else
-      @special = ""
-    end
-  end
-
   def is_finesse()
     if @finesse
       return " Finesse,"
