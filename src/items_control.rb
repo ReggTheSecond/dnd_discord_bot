@@ -1,17 +1,21 @@
 require_relative 'item.rb'
 require_relative 'currency.rb'
 require_relative 'weapon.rb'
+require_relative 'armour.rb'
 
 class ItemsControl
   attr_accessor :items
   attr_accessor :weapons
+  attr_accessor :armour
 
   def initialize()
     @items = Array.new()
     @weapons = Array.new()
+    @armour = Array.new()
 
     load_items()
     load_weapons()
+    load_armour()
   end
 
   def load_items()
@@ -84,6 +88,36 @@ class ItemsControl
     end
   end
 
+  def load_armour()
+    items_list = File.open("data/items/armour.csv", 'r')
+    items_list.each() do |line|
+      new_armour = Armour.new()
+      item_details = line.split("~")
+      item_details.each() do |detail|
+        if detail.include?("item_name")
+          new_armour.item_name = detail.split("=").last()
+        elsif detail.include?("item_decription")
+          new_armour.item_decription = detail.split("=").last()
+        elsif detail.include?("cost")
+          new_armour.cost = detail.split("=").last().to_i()
+        elsif detail.include?("weight")
+          new_armour.weight = detail.split("=").last()
+        elsif detail.include?("magical")
+          new_armour.magical = detail.split("=").last()
+        elsif detail.include?("armour class")
+          new_armour.armor_class = detail.split("=").last()
+        elsif detail.include?("strength")
+          new_armour.strength_required = detail.split("=").last()
+        elsif detail.include?("stealth")
+          new_armour.stealth = to_bool(detail.split("=").last())
+        elsif detail.include?("armour type")
+          new_armour.armour_type = detail.split("=").last().strip()
+        end
+      end
+      @armour << new_armour
+    end
+  end
+
   def to_bool(convet)
     if convet.strip() == "true"
       return true
@@ -109,9 +143,18 @@ class ItemsControl
     end
     return weapons
   end
+
+  def armour_to_string()
+    armours = ""
+    @armour.each() do |armour|
+      armours << "#{armour.to_string()}\n\n"
+    end
+    return armours
+  end
 end
 
 items = ItemsControl.new
 
 puts items.items_to_string()
 puts items.weapons_to_string()
+puts items.armour_to_string()
