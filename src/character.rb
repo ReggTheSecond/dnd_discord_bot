@@ -102,20 +102,6 @@ class Character
     end
   end
 
-  def roll_skill(skill)
-    rnd = Random.new()
-    if is_proficient(skill)
-      if is_expert(skill)
-        roll_total = rnd.rand(1..20) + (proficiency_bonus() * 2) + attribute_bonus(skill)
-      else
-        roll_total = rnd.rand(1..20) + proficiency_bonus() + attribute_bonus(skill)
-      end
-    else
-      roll_total = rnd.rand(1..20) + attribute_bonus(skill)
-    end
-    return roll_total
-  end
-
   def proficiency_bonus()
     if @experience <= 2700
       return 2
@@ -156,6 +142,33 @@ class Character
       attribute_score = attribute_score - (attribute_score + 1)
     end
     return attribute_score
+  end
+
+  def attack_attribute(weapon)
+    if weapon.is_finesse(weapon)
+      if @dexterity > @strength
+        return @dexterity
+      end
+    else
+      return @strength
+    end
+  end
+
+  def get_attribute(attribute)
+    case attribute
+    when "strength"
+      return @strength
+    when "dexterity"
+      return @dexterity
+    when "constitution"
+      return @constitution
+    when "intelligence"
+      return @intelligence
+    when "wisdom"
+      return @wisdom
+    when "charisma"
+      return @charisma
+    end
   end
 
   def add_class(character_class)
