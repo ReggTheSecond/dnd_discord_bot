@@ -44,7 +44,7 @@ class Character
 
   def roll_stats()
     dice = DiceRoller.new()
-    @strength = roll_stat()
+    @strength = dice.roll_stat()
     @constitution = dice.roll_stat()
     @dexterity = dice.roll_stat()
     @intelligence = dice.roll_stat()
