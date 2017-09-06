@@ -1,3 +1,4 @@
+require_relative 'currency.rb'
 class Item
   attr_accessor :currency
   attr_accessor :item_name

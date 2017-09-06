@@ -42,6 +42,16 @@ class DiceRoller
   end
 
   def roll_damage(attack)
+    if weapon_used()
 
+    end
+  end
+
+  def roll_stat()
+    rnd = Random.new()
+    stats = Array.new()
+    stats = [rnd.rand(1..6),rnd.rand(1..6),rnd.rand(1..6),rnd.rand(1..6)]
+    stats = stats.sort()
+    return (stats[3] + stats[2] + stats[1])
   end
 end

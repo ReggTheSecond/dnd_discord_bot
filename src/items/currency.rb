@@ -32,6 +32,6 @@ class Currency
       copper += -100
     end
     silver_copper = convert_to_silver(copper)
-    return "#{gold}gp, #{silver_copper}"
+    return "#{gold}gp, #{silver_copper}sp"
   end
 end
