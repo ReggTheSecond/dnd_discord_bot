@@ -1,5 +1,6 @@
 require_relative 'skills.rb'
 require_relative 'classes.rb'
+require_relative 'dice_roller.rb'
 
 class Character
   attr_accessor :character_name
@@ -42,28 +43,21 @@ class Character
   end
 
   def roll_stats()
+    dice = DiceRoller.new()
     @strength = roll_stat()
-    @constitution = roll_stat()
-    @dexterity = roll_stat()
-    @intelligence = roll_stat()
-    @wisdom = roll_stat()
-    @charisma = roll_stat()
+    @constitution = dice.roll_stat()
+    @dexterity = dice.roll_stat()
+    @intelligence = dice.roll_stat()
+    @wisdom = dice.roll_stat()
+    @charisma = dice.roll_stat()
     while two_stats_are_not_fifteen_or_above()
-      @strength = roll_stat()
-      @constitution = roll_stat()
-      @dexterity = roll_stat()
-      @intelligence = roll_stat()
-      @wisdom = roll_stat()
-      @charisma = roll_stat()
+      @strength = dice.roll_stat()
+      @constitution = dice.roll_stat()
+      @dexterity = dice.roll_stat()
+      @intelligence = dice.roll_stat()
+      @wisdom = dice.roll_stat()
+      @charisma = dice.roll_stat()
     end
-  end
-
-  def roll_stat()
-    rnd = Random.new()
-    stats = Array.new()
-    stats = [rnd.rand(1..6),rnd.rand(1..6),rnd.rand(1..6),rnd.rand(1..6)]
-    stats = stats.sort()
-    return (stats[3] + stats[2] + stats[1])
   end
 
   def two_stats_are_not_fifteen_or_above()
@@ -100,20 +94,6 @@ class Character
     else
       return true
     end
-  end
-
-  def roll_skill(skill)
-    rnd = Random.new()
-    if is_proficient(skill)
-      if is_expert(skill)
-        roll_total = rnd.rand(1..20) + (proficiency_bonus() * 2) + attribute_bonus(skill)
-      else
-        roll_total = rnd.rand(1..20) + proficiency_bonus() + attribute_bonus(skill)
-      end
-    else
-      roll_total = rnd.rand(1..20) + attribute_bonus(skill)
-    end
-    return roll_total
   end
 
   def proficiency_bonus()
@@ -156,6 +136,33 @@ class Character
       attribute_score = attribute_score - (attribute_score + 1)
     end
     return attribute_score
+  end
+
+  def attack_attribute(weapon)
+    if weapon.is_finesse(weapon)
+      if @dexterity > @strength
+        return @dexterity
+      end
+    else
+      return @strength
+    end
+  end
+
+  def get_attribute(attribute)
+    case attribute
+    when "strength"
+      return @strength
+    when "dexterity"
+      return @dexterity
+    when "constitution"
+      return @constitution
+    when "intelligence"
+      return @intelligence
+    when "wisdom"
+      return @wisdom
+    when "charisma"
+      return @charisma
+    end
   end
 
   def add_class(character_class)
@@ -205,6 +212,7 @@ class Character
     sheet = sheet.gsub("dexterity~", "dexterity~#{@dexterity}")
     sheet = sheet.gsub("intelligence~", "intelligence~#{@intelligence}")
     sheet = sheet.gsub("wisdom~", "wisdom~#{@wisdom}")
+    sheet = sheet.gsub("charisma~", "charisma~#{@charisma}")
     sheet = sheet.gsub("inventory~", "inventory~#{@inventory}")
     sheet = sheet.gsub("weapon_slot_one~", "weapon_slot_one~#{@weapon_slot_one}")
     sheet = sheet.gsub("weapon_slot_two~", "weapon_slot_two~#{@weapon_slot_two}")
@@ -220,7 +228,7 @@ class Character
     sheet = sheet.gsub("attuned_item_two~", "attuned_item_two~#{@attuned_item_two}")
     sheet = sheet.gsub("attuned_item_three~", "attuned_item_three~#{@attuned_item_three}")
     character_sheet = File.open("data/characters/#{character_name.downcase}.csv", 'w')
-    character_sheet << sheet#"#{@character_name}~#{@race}~#{@character_class}~#{@experience}~#{@strength}~#{@constitution}~#{@dexterity}~#{@intelligence}~#{@wisdom}~#{@charisma}~#{@proficiency}~#{@expertise}"
+    character_sheet << sheet
     character_sheet.close()
   end
 
@@ -293,11 +301,11 @@ class Character
       elsif line.include?("neck_slot~")
         @neck_slot = line.split("~").last().strip()
       elsif line.include?("head_slot~")
-        @wisdom = line.split("~").last().strip()
+        @head_slot = line.split("~").last().strip()
       elsif line.include?("attuned_item_one~")
-        @wisdom = line.split("~").last().strip()
+        @attuned_item_one = line.split("~").last().strip()
       elsif line.include?("attuned_item_two~")
-        @wisdom = line.split("~").last().strip()
+        @attuned_item_two = line.split("~").last().strip()
       elsif line.include?("attuned_item_three~")
         @attuned_item_three = line.split("~").last().strip()
       end
@@ -309,8 +317,7 @@ class Character
   end
 end
 
-relg = Character.new()
-relg.load_character("relg")
+# relg = Character.new()
 # relg.character_name = "Relg"
 # relg.race = "Dwarf"
 # relg.add_class("Monk")
@@ -319,7 +326,8 @@ relg.load_character("relg")
 # relg.add_expertise("History")
 # relg.add_proficiency("Perception")
 # relg.roll_stats
-# puts relg.to_string()
 # relg.save_to_csv()
+# relg.load_character("relg")
+
 # relg.load_character("Jim")
 # puts relg.to_string()
