@@ -25,4 +25,10 @@ class CharacterStorage
     end
     return return_character
   end
+
+  def list_characters_by_name()
+    @characters.each {|char|
+      puts char.character_name
+    }
+  end
 end

@@ -194,7 +194,7 @@ class Character
   end
 
   def save_to_csv()
-    template = File.open("data/characters/tamplate.csv", 'r')
+    template = File.open("data/templates/tamplate.csv", 'r')
     sheet=""
     template.each_line do |line|
       sheet << line
