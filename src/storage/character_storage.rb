@@ -15,20 +15,4 @@ class CharacterStorage
       @characters << character
     end
   end
-
-  def get_character(character_name)
-    return_character = Character.new()
-    @characters.each() do |character|
-      if character.character_name.downcase == character_name.downcase
-        return_character = character
-      end
-    end
-    return return_character
-  end
-
-  def list_characters_by_name()
-    @characters.each {|char|
-      puts char.character_name
-    }
-  end
 end
