@@ -44,7 +44,7 @@ class Character
 
   def roll_stats()
     dice = DiceRoller.new()
-    @strength = roll_stat()
+    @strength = dice.roll_stat()
     @constitution = dice.roll_stat()
     @dexterity = dice.roll_stat()
     @intelligence = dice.roll_stat()
@@ -194,7 +194,7 @@ class Character
   end
 
   def save_to_csv()
-    template = File.open("data/characters/tamplate.csv", 'r')
+    template = File.open("data/templates/tamplate.csv", 'r')
     sheet=""
     template.each_line do |line|
       sheet << line
