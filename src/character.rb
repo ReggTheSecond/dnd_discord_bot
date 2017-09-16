@@ -1,6 +1,7 @@
 require_relative 'skills.rb'
 require_relative 'classes.rb'
 require_relative 'dice_roller.rb'
+require_relative 'proficiencies.rb'
 
 class Character
   attr_accessor :character_name
@@ -172,8 +173,17 @@ class Character
   end
 
   def add_proficiency(proficiency)
+    proficiencies = Proficiencies.new()
     if @skills.is_a_skill(proficiency.downcase)
       @proficiency << proficiency.downcase
+    elsif proficiencies.is_a_weapon_type(proficiency.downcase)
+      @proficiency << proficiency.downcase
+    elsif proficiencies.is_an_armor_type(proficiency.downcase)
+      @proficiency << proficiency.downcase
+    elsif proficiencies.is_a_saving_throw(proficiency.downcase)
+      @proficiency << proficiency.downcase
+    elsif proficiencies.is_a_tools_set(tool)
+
     end
   end
 
@@ -317,16 +327,17 @@ class Character
   end
 end
 
-# relg = Character.new()
-# relg.character_name = "Relg"
-# relg.race = "Dwarf"
-# relg.add_class("Monk")
-# relg.experience = 1300
-# relg.add_proficiency("History")
-# relg.add_expertise("History")
-# relg.add_proficiency("Perception")
-# relg.roll_stats
-# relg.save_to_csv()
+relg = Character.new()
+relg.character_name = "Bill"
+relg.race = "Dwarf"
+relg.add_class("Monk")
+relg.experience = 1300
+relg.add_proficiency("History")
+relg.add_proficiency("Strength")
+relg.add_expertise("History")
+relg.add_proficiency("Perception")
+relg.roll_stats
+relg.save_to_csv()
 # relg.load_character("relg")
 
 # relg.load_character("Jim")
