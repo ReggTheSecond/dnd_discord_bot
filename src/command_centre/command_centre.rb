@@ -15,6 +15,11 @@ class CommandCentre < CommandParsingUtility
     case command.downcase()
     when /^skill:.+;character:.+/
       return @diceRoller.roll_skill(get_character(parse_character(command)), parse_skill(command))
+    when /^character:.+;attack/
+      return @diceRoller.roll_attack(get_character(parse_character(command)))
+    when /^character:.+;damage/
+      attack_used = "thing"
+      return @diceRoller.roll_damage(get_character(parse_character(command)), attack_used)
     end
   end
 
@@ -38,3 +43,5 @@ end
 thing = CommandCentre.new()
 
 puts thing.process_command("skill:perception;character:Relg")
+# puts thing.process_command("character:Bill;attack")
+puts thing.process_command("character:Bill;damage")

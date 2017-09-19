@@ -19,6 +19,14 @@ class Weapon < Item
     super()
   end
 
+  def get_dice_type()
+    return @damage_die.split("d").last()
+  end
+
+  def number_of_die()
+    return @damage_die.split("d").first()
+  end
+
   def is_finesse()
     if @finesse
       return " Finesse,"

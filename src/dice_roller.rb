@@ -24,7 +24,7 @@ class DiceRoller
   def roll_attack(character)
     rnd = Random.new()
     if character.is_proficient(character.weapon_slot_one)
-      roll_total = rnd.rand(1..20) + character.proficiency_bonus() + character.attack_attribute()
+      roll_total = rnd.rand(1..20) + character.proficiency_bonus() + character.attack_attribute(@weapon_slot_one)
     else
       roll_total = rnd.rand(1..20) + character.attack_attribute()
     end
@@ -41,9 +41,11 @@ class DiceRoller
     return roll_total
   end
 
-  def roll_damage(attack)
+  def roll_damage(character, attack)
+    rnd = Random.new()
     if weapon_used()
-
+      return (character.weapon_slot_one.number_of_die() * rnd.rand(1..character.weapon_slot_one.get_dice_type()))
+    elsif spell_used()
     end
   end
 
