@@ -2,7 +2,7 @@ require_relative 'skills.rb'
 require_relative 'classes.rb'
 require_relative 'dice_roller.rb'
 require_relative 'proficiencies.rb'
-require_relative 'items/items_control.rb'
+require_relative 'storage/items_storage.rb'
 
 class Character
   attr_accessor :character_name

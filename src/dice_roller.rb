@@ -1,5 +1,5 @@
 require_relative 'dice_roller_utility.rb'
-require_relative 'items/items_control.rb'
+require_relative 'storage/items_storage.rb'
 
 class DiceRoller < DiceRollerUtility
   def roll_stat()
