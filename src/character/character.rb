@@ -1,10 +1,11 @@
-require_relative 'skills.rb'
-require_relative 'classes.rb'
-require_relative 'dice_roller.rb'
-require_relative 'proficiencies.rb'
-require_relative 'storage/items_storage.rb'
+require_relative '..skills.rb'
+require_relative '..classes.rb'
+require_relative '..dice_roller.rb'
+require_relative '..proficiencies.rb'
+require_relative '..storage/items_storage.rb'
+require_relative 'character_utility.rb'
 
-class Character
+class Character < CharacterUtility
   attr_accessor :character_name
   attr_accessor :race
   attr_accessor :character_class
@@ -134,18 +135,6 @@ class Character
     return get_attribute_score(attribute_score)
   end
 
-  def get_attribute_score(attribute_score)
-    if attribute_score > 10
-      attribute_score = (attribute_score - 10) / 2
-    elsif attribute_score == 10
-      attribute_score = 0
-    else
-      attribute_score = attribute_score / 2
-      attribute_score = attribute_score - (attribute_score + 1)
-    end
-    return attribute_score
-  end
-
   def attack_attribute()
     if @weapon_slot_one.is_finesse()
       if @dexterity > @strength
@@ -157,54 +146,13 @@ class Character
     return get_attribute_score(attribute_score)
   end
 
-  def get_attribute(attribute)
-    case attribute
-    when "strength"
-      return @strength
-    when "dexterity"
-      return @dexterity
-    when "constitution"
-      return @constitution
-    when "intelligence"
-      return @intelligence
-    when "wisdom"
-      return @wisdom
-    when "charisma"
-      return @charisma
-    end
-  end
-
   def add_class(character_class)
     if classes.is_a_class(character_class.downcase)
       @character_class = character_class
     end
   end
-
-  def add_proficiency(proficiency)
-    proficiencies = Proficiencies.new()
-    if @skills.is_a_skill(proficiency.downcase)
-      @proficiency << proficiency.downcase
-    elsif proficiencies.is_a_weapon_type(proficiency.downcase)
-      @proficiency << proficiency.downcase
-    elsif proficiencies.is_an_armor_type(proficiency.downcase)
-      @proficiency << proficiency.downcase
-    elsif proficiencies.is_a_saving_throw(proficiency.downcase)
-      @proficiency << proficiency.downcase
-    elsif proficiencies.is_a_tools_set(proficiency.downcase)
-
-    end
-  end
-
   def is_proficient(skill)
     return @proficiency.include?(skill.downcase)
-  end
-
-  def add_expertise(expertise)
-    if @skills.is_a_skill(expertise.downcase)
-      if is_proficient(expertise)
-        @expertise << expertise.downcase
-      end
-    end
   end
 
   def is_expert(skill)
