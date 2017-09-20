@@ -1,4 +1,4 @@
-require_relative '../character.rb'
+require_relative '../character/character.rb'
 
 class CharacterStorage
   attr_accessor :path
