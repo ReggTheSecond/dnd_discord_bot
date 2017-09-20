@@ -1,7 +1,7 @@
-require_relative 'item.rb'
-require_relative 'currency.rb'
-require_relative 'weapon.rb'
-require_relative 'armour.rb'
+require_relative '../items/item.rb'
+require_relative '../items/currency.rb'
+require_relative '../items/weapon.rb'
+require_relative '../items/armour.rb'
 
 class ItemsControl
   attr_accessor :items
