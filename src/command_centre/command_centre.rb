@@ -42,6 +42,6 @@ end
 
 thing = CommandCentre.new()
 
-puts thing.process_command("skill:perception;character:Relg")
+# puts thing.process_command("skill:perception;character:Relg")
 # puts thing.process_command("character:Bill;attack")
-puts thing.process_command("character:Bill;damage")
+puts thing.process_command("character:Relg;damage")

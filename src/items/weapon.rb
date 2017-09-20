@@ -19,6 +19,10 @@ class Weapon < Item
     super()
   end
 
+  def set_weapon(name)
+    
+  end
+
   def get_dice_type()
     return @damage_die.split("d").last()
   end

@@ -1,4 +1,7 @@
-class DiceRoller
+require_relative 'dice_roller_utility.rb'
+require_relative 'storage/items_storage.rb'
+
+class DiceRoller < DiceRollerUtility
   def roll_stat()
     rnd = Random.new()
     stats = Array.new()
@@ -24,7 +27,7 @@ class DiceRoller
   def roll_attack(character)
     rnd = Random.new()
     if character.is_proficient(character.weapon_slot_one)
-      roll_total = rnd.rand(1..20) + character.proficiency_bonus() + character.attack_attribute(@weapon_slot_one)
+      roll_total = rnd.rand(1..20) + character.proficiency_bonus() + character.attack_attribute()
     else
       roll_total = rnd.rand(1..20) + character.attack_attribute()
     end
@@ -43,8 +46,10 @@ class DiceRoller
 
   def roll_damage(character, attack)
     rnd = Random.new()
-    if weapon_used()
-      return (character.weapon_slot_one.number_of_die() * rnd.rand(1..character.weapon_slot_one.get_dice_type()))
+    puts character.attack_attribute()
+    puts ""
+    if weapon_used(attack)
+      return (character.weapon_slot_one.number_of_die().to_i * rnd.rand(1..character.weapon_slot_one.get_dice_type().to_i)) + character.attack_attribute()
     elsif spell_used()
     end
   end

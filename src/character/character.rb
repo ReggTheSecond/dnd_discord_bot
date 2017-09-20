@@ -1,9 +1,11 @@
-require_relative 'skills.rb'
-require_relative 'classes.rb'
-require_relative 'dice_roller.rb'
-require_relative 'proficiencies.rb'
+require_relative '..skills.rb'
+require_relative '..classes.rb'
+require_relative '..dice_roller.rb'
+require_relative '..proficiencies.rb'
+require_relative '..storage/items_storage.rb'
+require_relative 'character_utility.rb'
 
-class Character
+class Character < CharacterUtility
   attr_accessor :character_name
   attr_accessor :race
   attr_accessor :character_class
@@ -34,6 +36,7 @@ class Character
 
   attr_accessor :classes
   attr_accessor :skills
+  attr_accessor :items
 
   def initialize()
     roll_stats()
@@ -41,6 +44,7 @@ class Character
     @expertise = Array.new()
     @classes = Classes.new()
     @skills = Skills.new()
+    @items = ItemsControl.new()
   end
 
   def roll_stats()
@@ -128,42 +132,18 @@ class Character
       attribute_score = @charisma
     end
 
-    if attribute_score > 10
-      attribute_score = (attribute_score - 10) / 2
-    elsif attribute_score == 10
-      attribute_score = 0
-    else
-      attribute_score = attribute_score / 2
-      attribute_score = attribute_score - (attribute_score + 1)
-    end
-    return attribute_score
+    return get_attribute_score(attribute_score)
   end
 
-  def attack_attribute(weapon)
-    if weapon.is_finesse(weapon)
+  def attack_attribute()
+    if @weapon_slot_one.is_finesse()
       if @dexterity > @strength
-        return @dexterity
+        attribute_score = @dexterity
       end
     else
-      return @strength
+      attribute_score = @strength
     end
-  end
-
-  def get_attribute(attribute)
-    case attribute
-    when "strength"
-      return @strength
-    when "dexterity"
-      return @dexterity
-    when "constitution"
-      return @constitution
-    when "intelligence"
-      return @intelligence
-    when "wisdom"
-      return @wisdom
-    when "charisma"
-      return @charisma
-    end
+    return get_attribute_score(attribute_score)
   end
 
   def add_class(character_class)
@@ -171,32 +151,8 @@ class Character
       @character_class = character_class
     end
   end
-
-  def add_proficiency(proficiency)
-    proficiencies = Proficiencies.new()
-    if @skills.is_a_skill(proficiency.downcase)
-      @proficiency << proficiency.downcase
-    elsif proficiencies.is_a_weapon_type(proficiency.downcase)
-      @proficiency << proficiency.downcase
-    elsif proficiencies.is_an_armor_type(proficiency.downcase)
-      @proficiency << proficiency.downcase
-    elsif proficiencies.is_a_saving_throw(proficiency.downcase)
-      @proficiency << proficiency.downcase
-    elsif proficiencies.is_a_tools_set(tool)
-
-    end
-  end
-
   def is_proficient(skill)
     return @proficiency.include?(skill.downcase)
-  end
-
-  def add_expertise(expertise)
-    if @skills.is_a_skill(expertise.downcase)
-      if is_proficient(expertise)
-        @expertise << expertise.downcase
-      end
-    end
   end
 
   def is_expert(skill)
@@ -293,7 +249,10 @@ class Character
       elsif line.include?("inventory~")
         @inventory = line.split("~").last().strip()
       elsif line.include?("weapon_slot_one~")
-        @weapon_slot_one = line.split("~").last().strip()
+        @weapon_slot_one = Weapon.new()
+        @weapon_slot_one = @items.get_weapon(line.split("~").last().strip())
+        # puts @character_name
+        # puts @weapon_slot_one.class
       elsif line.include?("weapon_slot_two~")
         @weapon_slot_two = line.split("~").last().strip()
       elsif line.include?("shield_slot~")
@@ -327,18 +286,18 @@ class Character
   end
 end
 
-relg = Character.new()
-relg.character_name = "Bill"
-relg.race = "Dwarf"
-relg.add_class("Monk")
-relg.experience = 1300
-relg.add_proficiency("History")
-relg.add_proficiency("Strength")
-relg.add_expertise("History")
-relg.add_proficiency("Perception")
-relg.roll_stats
-relg.save_to_csv()
+# relg = Character.new()
+# relg.character_name = "Bill"
+# relg.race = "Dwarf"
+# relg.add_class("Monk")
+# relg.experience = 1300
+# relg.add_proficiency("History")
+# relg.add_proficiency("Strength")
+# relg.add_expertise("History")
+# relg.add_proficiency("Perception")
+# relg.roll_stats
+# relg.save_to_csv()
 # relg.load_character("relg")
-
+# puts relg.weapon_slot_one.class
 # relg.load_character("Jim")
 # puts relg.to_string()

@@ -1,7 +1,7 @@
-require_relative 'item.rb'
-require_relative 'currency.rb'
-require_relative 'weapon.rb'
-require_relative 'armour.rb'
+require_relative '../items/item.rb'
+require_relative '../items/currency.rb'
+require_relative '../items/weapon.rb'
+require_relative '../items/armour.rb'
 
 class ItemsControl
   attr_accessor :items
@@ -104,17 +104,25 @@ class ItemsControl
           new_armour.weight = detail.split("=").last()
         elsif detail.include?("magical")
           new_armour.magical = detail.split("=").last()
-        elsif detail.include?("armour class")
+        elsif detail.include?("armour_class")
           new_armour.armor_class = detail.split("=").last()
         elsif detail.include?("strength")
           new_armour.strength_required = detail.split("=").last()
         elsif detail.include?("stealth")
           new_armour.stealth = to_bool(detail.split("=").last())
-        elsif detail.include?("armour type")
+        elsif detail.include?("armour_type")
           new_armour.armour_type = detail.split("=").last().strip()
         end
       end
       @armour << new_armour
+    end
+  end
+
+  def get_weapon(weapon)
+    @weapons.each() do |thing|
+      if thing.item_name == weapon
+        return thing
+      end
     end
   end
 
@@ -153,8 +161,8 @@ class ItemsControl
   end
 end
 
-items = ItemsControl.new
-
-puts items.items_to_string()
-puts items.weapons_to_string()
-puts items.armour_to_string()
+# items = ItemsControl.new
+#
+# puts items.items_to_string()
+# puts items.weapons_to_string()
+# puts items.armour_to_string()
