@@ -1,8 +1,8 @@
-require_relative '..skills.rb'
-require_relative '..classes.rb'
-require_relative '..dice_roller.rb'
-require_relative '..proficiencies.rb'
-require_relative '..storage/items_storage.rb'
+require_relative '../skills.rb'
+require_relative '../classes.rb'
+require_relative '../dice_roller/dice_roller.rb'
+require_relative '../proficiencies.rb'
+require_relative '../storage/items_storage.rb'
 require_relative 'character_utility.rb'
 
 class Character < CharacterUtility
