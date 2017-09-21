@@ -1,20 +1,19 @@
 character_name~Bill
-race~Dwarf
-character_class~Monk
+race~Human
+character_class~Fighter
 class_archetype~
-proficiency~["history", "strength", "perception"]
-expertise~["history"]
+proficiency~["athletics", "strength", "perception", "survival"]
+expertise~["athletics"]
 alighnment~
-experience~1300
-strength~5
-constitution~16
-dexterity~14
-intelligence~8
+experience~859
+strength~13
+constitution~13
+dexterity~18
+intelligence~15
 wisdom~15
-charisma~15
+charisma~10
 inventory~
-weapon_slot_one~
-weapon_slot_two~
+character_weapon~Long Sword
 shield_slot~
 armor_slot~
 boots_slot~

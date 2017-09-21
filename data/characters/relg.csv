@@ -1,20 +1,19 @@
-character_name~Relg
+character_name~relg
 race~Dwarf
 character_class~Monk
 class_archetype~
-proficiency~["history", "perception", "short sword"]
+proficiency~["history", "strength", "perception"]
 expertise~["history"]
 alighnment~
 experience~1300
-strength~9
-constitution~11
-dexterity~15
-intelligence~12
-wisdom~12
-charisma~18
+strength~15
+constitution~16
+dexterity~11
+intelligence~13
+wisdom~9
+charisma~13
 inventory~
-weapon_slot_one~short sword
-weapon_slot_two~
+character_weapon~short sword
 shield_slot~
 armor_slot~
 boots_slot~
