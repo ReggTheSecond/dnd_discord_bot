@@ -1,0 +1,28 @@
+character_name~Relg
+race~Dwarf
+character_class~Monk
+class_archetype~
+proficiency~["history", "perception", "short sword"]
+expertise~["history"]
+alighnment~
+experience~1300
+strength~9
+constitution~11
+dexterity~15
+intelligence~12
+wisdom~12
+charisma~18
+inventory~
+weapon_slot_one~short sword
+weapon_slot_two~
+shield_slot~
+armor_slot~
+boots_slot~
+gloves_slot~
+ring_slot_one~
+ring_slot_two~
+neck_slot~
+head_slot~
+attuned_item_one~
+attuned_item_two~
+attuned_item_three~

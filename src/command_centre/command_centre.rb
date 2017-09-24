@@ -1,5 +1,5 @@
 require_relative '../storage/character_storage.rb'
-require_relative '../dice_roller.rb'
+require_relative '../dice_roller/dice_roller.rb'
 require_relative 'command_parsing_utility.rb'
 
 class CommandCentre < CommandParsingUtility
