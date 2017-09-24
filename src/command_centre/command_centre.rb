@@ -15,6 +15,8 @@ class CommandCentre < CommandParsingUtility
     case command.downcase()
     when /^skill:.+;character:.+/
       return @diceRoller.roll_skill(get_character(parse_character(command)), parse_skill(command))
+    when /^character:.+;spell:+./
+      return @spells.cast(get_character(parse_character(command)), parse_spell(command))
     when /^character:.+;attack/
       return @diceRoller.roll_attack(get_character(parse_character(command)))
     when /^character:.+;damage/
