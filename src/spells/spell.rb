@@ -19,8 +19,14 @@ class Spell
     end
   end
 
+  def get_at_higher_levels()
+    if @at_higher_levels.strip != ""
+      return "\nAt Higher Levels: #{@at_higher_levels}"
+    end
+  end
+
   def to_string()
-    return "#{@spell_name}\n#{spell_tag_line()}\nCasting Time: #{@casting_time}\nRange: #{@range}\nComponents: #{@components}\nDuration: #{@duration}\n#{@spell_description}\nAt Higher Levels: #{@at_higher_levels}"
+    return "#{@spell_name}\n#{spell_tag_line()}\nCasting Time: #{@casting_time}\nRange: #{@range}\nComponents: #{@components}\nDuration: #{@duration}\n#{@spell_description}#{get_at_higher_levels()}"
   end
 end
 
