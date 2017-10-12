@@ -10,4 +10,8 @@ class CommandParsingUtility
   def parse_action(command)
     return command.split(";").last
   end
+
+  def parse_spell(command)
+    return command.split(";").last
+  end
 end
