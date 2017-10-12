@@ -1,4 +1,40 @@
 class CharacterUtility
+  def two_stats_are_not_fifteen_or_above()
+    if @strength >= 15
+      onestat = true
+    end
+    if @constitution >= 15 && onestat
+      twostat = true
+    elsif @constitution >= 15
+      onestat = true
+    end
+    if @dexterity >= 15 && onestat
+      twostat = true
+    elsif @dexterity >= 15
+      onestat = true
+    end
+    if @intelligence >= 15 && onestat
+      twostat = true
+    elsif @intelligence >= 15
+      onestat = true
+    end
+    if @wisdom >= 15 && onestat
+      twostat = true
+    elsif @wisdom >= 15
+      onestat = true
+    end
+    if @charisma >= 15 && onestat
+      twostat = true
+    elsif @charisma >= 15
+      onestat = true
+    end
+    if onestat && twostat
+      return false
+    else
+      return true
+    end
+  end
+  
   def get_attribute_score(attribute_score)
     if attribute_score > 10
       attribute_score = (attribute_score - 10) / 2

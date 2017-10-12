@@ -1,20 +1,19 @@
 character_name~Delg
-race~Dwarf
-character_class~Monk
+race~Elf
+character_class~Cleric
 class_archetype~
-proficiency~["history", "perception"]
+proficiency~["history", "strength", "perception", "religion"]
 expertise~["history"]
 alighnment~
-experience~1300
-strength~9
-constitution~11
-dexterity~15
+experience~750
+strength~18
+constitution~15
+dexterity~12
 intelligence~12
 wisdom~12
-charisma~18
+charisma~14
 inventory~
-weapon_slot_one~
-weapon_slot_two~
+character_weapon~Battle Axe
 shield_slot~
 armor_slot~
 boots_slot~
