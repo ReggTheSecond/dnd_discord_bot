@@ -2,7 +2,7 @@ character_name~Bill
 race~Human
 character_class~Fighter
 class_archetype~
-proficiency~["athletics", "strength", "perception", "survival"]
+proficiency~["athletics", "strength", "perception", "survival", "martial melee"]
 expertise~["athletics"]
 alighnment~
 experience~859

@@ -50,6 +50,8 @@ class ItemsControl
           new_weapon.item_name = detail.split("=").last()
         elsif detail.include?("item_decription")
           new_weapon.item_decription = detail.split("=").last()
+        elsif detail.include?("proficiency required=")
+          new_weapon.proficiency_required = detail.split("=").last()
         elsif detail.include?("cost")
           new_weapon.cost = detail.split("=").last().to_i()
         elsif detail.include?("weight")

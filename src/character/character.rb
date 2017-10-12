@@ -101,7 +101,10 @@ class Character < CharacterUtility
   def attack_attribute()
     if @character_weapon.finesse
       if @dexterity > @strength
+        puts "ting"
         attribute_score = @dexterity
+      else
+        attribute_score = @strength
       end
     else
       attribute_score = @strength
@@ -257,7 +260,16 @@ class Character < CharacterUtility
   end
 
   def to_string()
-    return "Name: #{@character_name}\nRace: #{@race}\nClass: #{@character_class}\nStrength: #{@strength}\nConstitution: #{@constitution}\nDexterity: #{@dexterity}\nIntelligence: #{@intelligence}\nWisdom: #{@wisdom}\nCharisma: #{@charisma}"
+    return "Name: #{@character_name}
+      Race: #{@race}
+      Class: #{@character_class}
+      Strength: #{@strength}
+      Constitution: #{@constitution}
+      Dexterity: #{@dexterity}
+      Intelligence: #{@intelligence}
+      Wisdom: #{@wisdom}
+      Charisma: #{@charisma}
+      Weapon: #{character_weapon.item_name}"
   end
 end
 
