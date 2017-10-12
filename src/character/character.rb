@@ -99,7 +99,7 @@ class Character < CharacterUtility
   end
 
   def attack_attribute()
-    if @character_weapon.is_finesse()
+    if @character_weapon.finesse
       if @dexterity > @strength
         attribute_score = @dexterity
       end
@@ -112,6 +112,16 @@ class Character < CharacterUtility
   def set_character_weapon(weapon)
     @character_weapon = Weapon.new()
     @character_weapon = @items.get_weapon(weapon)
+  end
+
+  def weapon_stat()
+    if @character_weapon.finesse
+      if @dexterity > @strength
+        return "dexterity"
+      end
+    else
+      return "strength"
+    end
   end
 
   def set_class(character_class)
@@ -251,20 +261,21 @@ class Character < CharacterUtility
   end
 end
 
-relg = Character.new()
-relg.character_name = "Bill"
-relg.race = "Human"
-relg.set_class("Fighter")
-relg.experience = 859
-relg.add_proficiency("athletics")
-relg.add_proficiency("Strength")
-relg.add_expertise("athletics")
-relg.add_proficiency("Perception")
-relg.add_proficiency("survival")
-relg.roll_stats
-relg.set_character_weapon("Long Sword")
-relg.save_to_csv()
-# relg.load_character("relg")
+# relg = Character.new()
+# relg.character_name = "Bill"
+# relg.race = "Human"
+# relg.set_class("Fighter")
+# relg.experience = 859
+# relg.add_proficiency("athletics")
+# relg.add_proficiency("Strength")
+# relg.add_expertise("athletics")
+# relg.add_proficiency("Perception")
+# relg.add_proficiency("survival")
+# relg.roll_stats
+# relg.set_character_weapon("Long Sword")
+# relg.save_to_csv()
+# relg.load_character("Relg")
 # puts relg.character_weapon.class
 # relg.load_character("Jim")
 # puts relg.to_string()
+# puts relg.is_proficient("athletics")
