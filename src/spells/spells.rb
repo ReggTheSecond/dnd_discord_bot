@@ -90,6 +90,16 @@ class Spells
         spell_or_not = true
       end
     end
+    @first_level_spells.each do |spell|
+      if spell.spell_name == spell_name
+        spell_or_not = true
+      end
+    end
+    @ninth_level_spells.each do |spell|
+      if spell.spell_name == spell_name
+        spell_or_not = true
+      end
+    end
 
     return spell_or_not
   end
