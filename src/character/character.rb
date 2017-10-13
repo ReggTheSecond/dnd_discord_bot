@@ -37,6 +37,7 @@ class Character < CharacterUtility
   attr_accessor :classes
   attr_accessor :skills
   attr_accessor :items
+  attr_accessor :spells_list
 
   def initialize()
     roll_stats()
@@ -45,6 +46,7 @@ class Character < CharacterUtility
     @classes = Classes.new()
     @skills = Skills.new()
     @items = ItemsControl.new()
+    @spells_list = Spells.new()
     @spells = Array.new()
   end
 
@@ -269,10 +271,6 @@ class Character < CharacterUtility
     end
   end
 
-  def list_spells()
-    return @spells
-  end
-
   def to_string()
     return "Name: #{@character_name}
       Race: #{@race}
@@ -288,5 +286,4 @@ class Character < CharacterUtility
   end
 end
 
-char = Character.new()
-char.load_character("Tia")
+# char = Character.new()
