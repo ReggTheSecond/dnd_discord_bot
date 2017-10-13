@@ -34,7 +34,7 @@ class CharacterUtility
       return true
     end
   end
-  
+
   def get_attribute_score(attribute_score)
     if attribute_score > 10
       attribute_score = (attribute_score - 10) / 2
@@ -85,5 +85,9 @@ class CharacterUtility
         @expertise << expertise.downcase
       end
     end
+  end
+
+  def add_spell(new_spell)
+    @spells << new_spell
   end
 end

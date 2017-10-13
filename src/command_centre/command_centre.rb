@@ -17,11 +17,14 @@ class CommandCentre < CommandParsingUtility
       return @diceRoller.roll_skill(get_character(parse_character(command)), parse_skill(command))
     when /^character:.+;spell:+./
       return @spells.cast(get_character(parse_character(command)), parse_spell(command))
-    when /^character:.+;attack/
+    when /^character:.+;attack$/
       return @diceRoller.roll_attack(get_character(parse_character(command)))
-    when /^character:.+;damage/
-      attack_used = "thing"
-      return @diceRoller.roll_damage(get_character(parse_character(command)), attack_used)
+    when /^character:.+;weapon damage$/
+      return @diceRoller.roll_weapon_damage(get_character(parse_character(command)))
+    when /^character:.+;spell list$/
+      return get_character(parse_character(command)).list_spells()
+    when /^character:.+;spell slots$/
+      return get_character(parse_character(command)).spells_slots()
     end
   end
 
@@ -44,6 +47,4 @@ end
 
 thing = CommandCentre.new()
 
-# puts thing.process_command("skill:perception;character:Relg")
-puts thing.process_command("character:Bill;attack")
-puts thing.process_command("character:Relg;attack")
+puts thing.process_command("character:Tia;spell list")
