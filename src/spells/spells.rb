@@ -25,6 +25,13 @@ class Spells
     @ninth_level_spells = Array.new()
     load_spells("cantrips")
     load_spells("1st")
+    load_spells("2nd")
+    load_spells("3rd")
+    load_spells("4th")
+    load_spells("5th")
+    load_spells("6th")
+    load_spells("7th")
+    load_spells("8th")
     load_spells("9th")
   end
 
@@ -46,6 +53,8 @@ class Spells
           spell.range = detail.split("=").last()
         elsif detail.include?("components=")
           spell.components = detail.split("=").last()
+        elsif detail.include?("materials=")
+          spell.materials = detail.split("=").last()
         elsif detail.include?("duration=")
           spell.duration = detail.split("=").last()
         elsif detail.include?("description=")
@@ -95,6 +104,41 @@ class Spells
         spell_or_not = true
       end
     end
+    @second_level_spells.each do |spell|
+      if spell.spell_name == spell_name
+        spell_or_not = true
+      end
+    end
+    @thrid__level_spells.each do |spell|
+      if spell.spell_name == spell_name
+        spell_or_not = true
+      end
+    end
+    @fourth_level_spells.each do |spell|
+      if spell.spell_name == spell_name
+        spell_or_not = true
+      end
+    end
+    @fifth_level_spells.each do |spell|
+      if spell.spell_name == spell_name
+        spell_or_not = true
+      end
+    end
+    @sixth_level_spells.each do |spell|
+      if spell.spell_name == spell_name
+        spell_or_not = true
+      end
+    end
+    @seventh_level_spells.each do |spell|
+      if spell.spell_name == spell_name
+        spell_or_not = true
+      end
+    end
+    @eighth_level_spells.each do |spell|
+      if spell.spell_name == spell_name
+        spell_or_not = true
+      end
+    end
     @ninth_level_spells.each do |spell|
       if spell.spell_name == spell_name
         spell_or_not = true
@@ -113,6 +157,34 @@ class Spells
       puts spell.to_string()
       puts ""
     end
+    @second_level_spells.each do |spell|
+      puts spell.to_string()
+      puts ""
+    end
+    @thrid__level_spells.each do |spell|
+      puts spell.to_string()
+      puts ""
+    end
+    @fourth_level_spells.each do |spell|
+      puts spell.to_string()
+      puts ""
+    end
+    @fifth_level_spells.each do |spell|
+      puts spell.to_string()
+      puts ""
+    end
+    @sixth_level_spells.each do |spell|
+      puts spell.to_string()
+      puts ""
+    end
+    @seventh_level_spells.each do |spell|
+      puts spell.to_string()
+      puts ""
+    end
+    @eighth_level_spells.each do |spell|
+      puts spell.to_string()
+      puts ""
+    end
     @ninth_level_spells.each do |spell|
       puts spell.to_string()
       puts ""
@@ -120,4 +192,5 @@ class Spells
   end
 end
 
-# spells = Spells.new()
+spells = Spells.new()
+spells.puts_spells

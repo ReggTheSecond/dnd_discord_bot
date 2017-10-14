@@ -3,6 +3,7 @@ class Spell
   attr_accessor :casting_time
   attr_accessor :range
   attr_accessor :components
+  attr_accessor :materials
   attr_accessor :duration
   attr_accessor :spell_description
   attr_accessor :at_higher_levels
@@ -14,8 +15,14 @@ class Spell
   def spell_tag_line()
     if @spell_level == 0
       return "#{@school} cantrip"
+    elsif @spell_level == 2
+      return "#{@spell_level}nd-level#{@school}"
+    elsif @spell_level == 3
+      return "#{@spell_level}rd-level#{@school}"
+    elsif @spell_level == 1
+      return "#{@spell_level}st-level#{@school}"
     else
-      return "#{@spell_level}st-level #{@school}"
+      return "#{@spell_level}th-level #{@school}"
     end
   end
 
