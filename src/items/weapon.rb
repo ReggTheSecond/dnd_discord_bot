@@ -14,13 +14,14 @@ class Weapon < Item
   attr_accessor :thrown
   attr_accessor :two_handed
   attr_accessor :versatile
+  attr_accessor :proficiency_required
 
   def initialize()
     super()
   end
 
   def set_weapon(name)
-    
+
   end
 
   def get_dice_type()

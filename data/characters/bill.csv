@@ -2,16 +2,16 @@ character_name~Bill
 race~Human
 character_class~Fighter
 class_archetype~
-proficiency~["athletics", "strength", "perception", "survival"]
+proficiency~["athletics", "strength", "perception", "survival", "martial melee"]
 expertise~["athletics"]
 alighnment~
 experience~859
-strength~13
+strength~10
 constitution~13
-dexterity~18
+dexterity~15
 intelligence~15
-wisdom~15
-charisma~10
+wisdom~14
+charisma~13
 inventory~
 character_weapon~Long Sword
 shield_slot~

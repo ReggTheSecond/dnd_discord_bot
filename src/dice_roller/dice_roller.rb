@@ -26,7 +26,8 @@ class DiceRoller < DiceRollerUtility
 
   def roll_attack(character)
     rnd = Random.new()
-    if character.is_proficient(character.character_weapon)
+    puts character.to_string
+    if character.is_proficient(character.character_weapon.proficiency_required)
       roll_total = rnd.rand(1..20) + character.proficiency_bonus() + character.attack_attribute()
     else
       roll_total = rnd.rand(1..20) + character.attack_attribute()
