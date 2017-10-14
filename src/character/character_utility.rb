@@ -1,3 +1,5 @@
+require_relative '../spells/spells.rb'
+
 class CharacterUtility
   def two_stats_are_not_fifteen_or_above()
     if @strength >= 15
@@ -34,7 +36,7 @@ class CharacterUtility
       return true
     end
   end
-  
+
   def get_attribute_score(attribute_score)
     if attribute_score > 10
       attribute_score = (attribute_score - 10) / 2
@@ -85,5 +87,15 @@ class CharacterUtility
         @expertise << expertise.downcase
       end
     end
+  end
+
+  def add_spell(new_spell)
+    if spells_list.is_a_spell?(new_spell)
+      @spells << new_spell
+    end
+  end
+
+  def list_spells()
+    return @spells
   end
 end

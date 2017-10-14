@@ -83,6 +83,27 @@ class Spells
     end
   end
 
+  def is_a_spell?(spell_name)
+    spell_or_not = false
+    @cantrips.each do |spell|
+      if spell.spell_name == spell_name
+        spell_or_not = true
+      end
+    end
+    @first_level_spells.each do |spell|
+      if spell.spell_name == spell_name
+        spell_or_not = true
+      end
+    end
+    @ninth_level_spells.each do |spell|
+      if spell.spell_name == spell_name
+        spell_or_not = true
+      end
+    end
+
+    return spell_or_not
+  end
+
   def puts_spells()
     @cantrips.each do |spell|
       puts spell.to_string()
@@ -99,6 +120,4 @@ class Spells
   end
 end
 
-spells = Spells.new()
-
-spells.puts_spells()
+# spells = Spells.new()

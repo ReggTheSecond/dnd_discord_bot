@@ -32,10 +32,12 @@ class Character < CharacterUtility
   attr_accessor :head_slot
   attr_accessor :attuned_item_one
   attr_accessor :attuned_item_two
+  attr_accessor :spells
 
   attr_accessor :classes
   attr_accessor :skills
   attr_accessor :items
+  attr_accessor :spells_list
 
   def initialize()
     roll_stats()
@@ -44,6 +46,8 @@ class Character < CharacterUtility
     @classes = Classes.new()
     @skills = Skills.new()
     @items = ItemsControl.new()
+    @spells_list = Spells.new()
+    @spells = Array.new()
   end
 
   def roll_stats()
@@ -101,7 +105,6 @@ class Character < CharacterUtility
   def attack_attribute()
     if @character_weapon.finesse
       if @dexterity > @strength
-        puts "ting"
         attribute_score = @dexterity
       else
         attribute_score = @strength
@@ -174,6 +177,7 @@ class Character < CharacterUtility
     sheet = sheet.gsub("attuned_item_one~", "attuned_item_one~#{@attuned_item_one}")
     sheet = sheet.gsub("attuned_item_two~", "attuned_item_two~#{@attuned_item_two}")
     sheet = sheet.gsub("attuned_item_three~", "attuned_item_three~#{@attuned_item_three}")
+    sheet = sheet.gsub("spells~", "spells~#{@spells}")
     character_sheet = File.open("data/characters/#{character_name.downcase}.csv", 'w')
     character_sheet << sheet
     character_sheet.close()
@@ -231,8 +235,6 @@ class Character < CharacterUtility
         @inventory = line.split("~").last().strip()
       elsif line.include?("character_weapon~")
         set_character_weapon(line.split("~").last().strip())
-        # puts @character_name
-        # puts @character_weapon.class
       elsif line.include?("shield_slot~")
         @shield_slot = line.split("~").last().strip()
       elsif line.include?("armor_slot~")
@@ -255,6 +257,16 @@ class Character < CharacterUtility
         @attuned_item_two = line.split("~").last().strip()
       elsif line.include?("attuned_item_three~")
         @attuned_item_three = line.split("~").last().strip()
+      elsif line.include?("spells~")
+        temp_spells = line.split("\"]").first().split("[\"").last()
+        if temp_spells.include?("\", \"")
+          spells = temp_spells.split("\", \"")
+          spells.each() do |spell|
+            add_spell(spell)
+          end
+        else
+          add_spell(temp_spells)
+        end
       end
     end
   end
@@ -269,25 +281,9 @@ class Character < CharacterUtility
       Intelligence: #{@intelligence}
       Wisdom: #{@wisdom}
       Charisma: #{@charisma}
-      Weapon: #{character_weapon.item_name}"
+      Weapon: #{character_weapon.item_name}
+      spells: #{list_spells()}"
   end
 end
 
-# relg = Character.new()
-# relg.character_name = "Bill"
-# relg.race = "Human"
-# relg.set_class("Fighter")
-# relg.experience = 859
-# relg.add_proficiency("athletics")
-# relg.add_proficiency("Strength")
-# relg.add_expertise("athletics")
-# relg.add_proficiency("Perception")
-# relg.add_proficiency("survival")
-# relg.roll_stats
-# relg.set_character_weapon("Long Sword")
-# relg.save_to_csv()
-# relg.load_character("Relg")
-# puts relg.character_weapon.class
-# relg.load_character("Jim")
-# puts relg.to_string()
-# puts relg.is_proficient("athletics")
+# char = Character.new()
