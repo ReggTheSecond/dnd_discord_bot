@@ -1,0 +1,32 @@
+class name~Wizard,
+archetype~"School of Evocation", "School of Abjuration", "School of Conjuration", "School of Enchantment", "School of Divination", "School of Illusion", "School of Transmutation", "School of Necromancy"
+hit points at first level~6+con
+hit points at higher levels~1d6+con
+hit dice~1d6
+saving throws~["Intelligence", "Wisdom"]
+skills proficiencies~["Arcana", "History", "Insight", "Investigation", "Medicine", "Religion"]
+weapon proficiencies~["daggers", "darts", "slings", "quarterstaffs", "light crossbows"]
+armour proficiencies~[]
+tool proficiencies~[]
+spell save DC~8+proficiency_bonus+intelligence
+spell attack modifier~proficiency_bonus+intelligence
+at level 1~Proficiency Bonus=2,cantrips=3,1st=2,2nd=0,3rd=0,4th=0,5th=0,6th=0,7th=0,8th=0,9th=0
+at level 2~Proficiency Bonus=2,cantrips=3,1st=3,2nd=0,3rd=0,4th=0,5th=0,6th=0,7th=0,8th=0,9th=0
+at level 3~Proficiency Bonus=2,cantrips=4,1st=4,2nd=2,3rd=0,4th=0,5th=0,6th=0,7th=0,8th=0,9th=0
+at level 4~Proficiency Bonus=2,cantrips=4,1st=4,2nd=3,3rd=0,4th=0,5th=0,6th=0,7th=0,8th=0,9th=0
+at level 5~Proficiency Bonus=3,cantrips=4,1st=4,2nd=3,3rd=2,4th=0,5th=0,6th=0,7th=0,8th=0,9th=0
+at level 6~Proficiency Bonus=3,cantrips=4,1st=4,2nd=3,3rd=3,4th=0,5th=0,6th=0,7th=0,8th=0,9th=0
+at level 7~Proficiency Bonus=3,cantrips=4,1st=4,2nd=3,3rd=3,4th=1,5th=0,6th=0,7th=0,8th=0,9th=0
+at level 8~Proficiency Bonus=3,cantrips=4,1st=4,2nd=3,3rd=3,4th=2,5th=0,6th=0,7th=0,8th=0,9th=0
+at level 9~Proficiency Bonus=4,cantrips=4,1st=4,2nd=3,3rd=3,4th=3,5th=1,6th=0,7th=0,8th=0,9th=0
+at level 10~Proficiency Bonus=4,cantrips=5,1st=4,2nd=3,3rd=3,4th=3,5th=2,6th=0,7th=0,8th=0,9th=0
+at level 11~Proficiency Bonus=4,cantrips=5,1st=4,2nd=3,3rd=3,4th=3,5th=2,6th1=0,7th=0,8th=0,9th=0
+at level 12~Proficiency Bonus=4,cantrips=5,1st=4,2nd=3,3rd=3,4th=3,5th=2,6th=1,7th=0,8th=0,9th=0
+at level 13~Proficiency Bonus=5,cantrips=5,1st=4,2nd=3,3rd=3,4th=3,5th=2,6th=1,7th=1,8th=0,9th=0
+at level 14~Proficiency Bonus=5,cantrips=5,1st=4,2nd=3,3rd=3,4th=3,5th=2,6th=1,7th=1,8th=0,9th=0
+at level 15~Proficiency Bonus=5,cantrips=5,1st=4,2nd=3,3rd=3,4th=3,5th=2,6th=1,7th=1,8th=1,9th=0
+at level 16~Proficiency Bonus=5,cantrips=5,1st=4,2nd=3,3rd=3,4th=3,5th=2,6th=1,7th=1,8th=1,9th=0
+at level 17~Proficiency Bonus=6,cantrips=5,1st=4,2nd=3,3rd=3,4th=3,5th=2,6th=1,7th=1,8th=1,9th=1
+at level 18~Proficiency Bonus=6,cantrips=5,1st=4,2nd=3,3rd=3,4th=3,5th=3,6th=1,7th=1,8th=1,9th=1
+at level 19~Proficiency Bonus=6,cantrips=5,1st=4,2nd=3,3rd=3,4th=3,5th=3,6th=2,7th=1,8th=1,9th=1
+at level 20~Proficiency Bonus=6,cantrips=5,1st=4,2nd=3,3rd=3,4th=3,5th=3,6th=2,7th=2,8th=1,9th=1

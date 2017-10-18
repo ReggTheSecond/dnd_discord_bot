@@ -45,6 +45,4 @@ class CommandCentre < CommandParsingUtility
   end
 end
 
-thing = CommandCentre.new()
-
-puts thing.process_command("character:Tia;spell list")
+# thing = CommandCentre.new()
