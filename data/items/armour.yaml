@@ -1,0 +1,13 @@
+---
+- !ruby/object:Armour
+  currency: !ruby/object:Currency
+    value_of_gold: 100
+    value_of_silver: 10
+  item_name: Chain Mail
+  item_decription: A bloody bit of chain
+  cost: 123
+  weight: '15'
+  magical: 'false'
+  armour_type: 'false'
+  armor_class: '10'
+  strength_required: '10'
