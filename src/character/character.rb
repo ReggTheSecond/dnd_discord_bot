@@ -4,6 +4,7 @@ require_relative '../dice_roller/dice_roller.rb'
 require_relative '../proficiencies.rb'
 require_relative '../storage/items_storage.rb'
 require_relative 'character_utility.rb'
+require "yaml"
 
 class Character < CharacterUtility
   attr_accessor :character_name
@@ -144,133 +145,6 @@ class Character < CharacterUtility
     return @expertise.include?(skill.downcase)
   end
 
-  def save_to_csv()
-    template = File.open("data/templates/tamplate.csv", 'r')
-    sheet=""
-    template.each_line do |line|
-      sheet << line
-    end
-    sheet = sheet.gsub("character_name~", "character_name~#{@character_name}")
-    sheet = sheet.gsub("race~", "race~#{@race}")
-    sheet = sheet.gsub("character_class~", "character_class~#{@character_class}")
-    sheet = sheet.gsub("class_archetype~", "class_archetype~#{@class_archetype}")
-    sheet = sheet.gsub("proficiency~", "proficiency~#{@proficiency}")
-    sheet = sheet.gsub("expertise~", "expertise~#{@expertise}")
-    sheet = sheet.gsub("alighnment~", "alighnment~#{@alighnment}")
-    sheet = sheet.gsub("experience~", "experience~#{@experience}")
-    sheet = sheet.gsub("strength~", "strength~#{@strength}")
-    sheet = sheet.gsub("constitution~", "constitution~#{@constitution}")
-    sheet = sheet.gsub("dexterity~", "dexterity~#{@dexterity}")
-    sheet = sheet.gsub("intelligence~", "intelligence~#{@intelligence}")
-    sheet = sheet.gsub("wisdom~", "wisdom~#{@wisdom}")
-    sheet = sheet.gsub("charisma~", "charisma~#{@charisma}")
-    sheet = sheet.gsub("inventory~", "inventory~#{@inventory}")
-    sheet = sheet.gsub("character_weapon~", "character_weapon~#{@character_weapon.item_name}")
-    sheet = sheet.gsub("shield_slot~", "shield_slot~#{@shield_slot}")
-    sheet = sheet.gsub("armor_slot~", "armor_slot~#{@armor_slot}")
-    sheet = sheet.gsub("boots_slot~", "boots_slot~#{@boots_slot}")
-    sheet = sheet.gsub("gloves_slot~", "gloves_slot~#{@gloves_slot}")
-    sheet = sheet.gsub("ring_slot_one~", "ring_slot_one~#{@ring_slot_one}")
-    sheet = sheet.gsub("ring_slot_two~", "ring_slot_two~#{@ring_slot_two}")
-    sheet = sheet.gsub("neck_slot~", "neck_slot~#{@neck_slot}")
-    sheet = sheet.gsub("head_slot~", "head_slot~#{@head_slot}")
-    sheet = sheet.gsub("attuned_item_one~", "attuned_item_one~#{@attuned_item_one}")
-    sheet = sheet.gsub("attuned_item_two~", "attuned_item_two~#{@attuned_item_two}")
-    sheet = sheet.gsub("attuned_item_three~", "attuned_item_three~#{@attuned_item_three}")
-    sheet = sheet.gsub("spells~", "spells~#{@spells}")
-    character_sheet = File.open("data/characters/#{character_name.downcase}.csv", 'w')
-    character_sheet << sheet
-    character_sheet.close()
-  end
-
-  def load_character(character_name)
-    character_sheet = File.open("data/characters/#{character_name.downcase}.csv", 'r')
-    temp_skills = ""
-    character_sheet.each_line() do |line|
-      if line.include?("character_name~")
-        @character_name = line.split("~").last().strip()
-      elsif line.include?("race~")
-        @race = line.split("~").last().strip()
-      elsif line.include?("character_class~")
-        @character_class = line.split("~").last().strip()
-      elsif line.include?("class_archetype~")
-        @class_archetype = line.split("~").last().strip()
-      elsif line.include?("proficiency~")
-        temp_skills = line.split("\"]").first().split("[\"").last()
-        if temp_skills.include?("\", \"")
-          skills = temp_skills.split("\", \"")
-          skills.each() do |skill|
-            add_proficiency(skill)
-          end
-        else
-          add_proficiency(temp_skills)
-        end
-      elsif line.include?("expertise~")
-        temp_skills = line.split("\"]").first().split("[\"").last()
-        if temp_skills.include?("\", \"")
-          skills = temp_skills.split("\", \"")
-          skills.each() do |skill|
-            add_expertise(skill)
-          end
-        else
-          add_expertise(temp_skills)
-        end
-      elsif line.include?("alighnment~")
-        @alighnment = line.split("~").last().strip()
-      elsif line.include?("experience~")
-        @experience = line.split("~").last().to_i()
-      elsif line.include?("strength~")
-        @strength = line.split("~").last().to_i()
-      elsif line.include?("constitution~")
-        @constitution = line.split("~").last().to_i()
-      elsif line.include?("dexterity~")
-        @dexterity = line.split("~").last().to_i()
-      elsif line.include?("intelligence~")
-        @intelligence = line.split("~").last().to_i()
-      elsif line.include?("wisdom~")
-        @wisdom = line.split("~").last().to_i()
-      elsif line.include?("charisma~")
-        @charisma = line.split("~").last().to_i()
-      elsif line.include?("inventory~")
-        @inventory = line.split("~").last().strip()
-      elsif line.include?("character_weapon~")
-        set_character_weapon(line.split("~").last().strip())
-      elsif line.include?("shield_slot~")
-        @shield_slot = line.split("~").last().strip()
-      elsif line.include?("armor_slot~")
-        @armor_slot = line.split("~").last().strip()
-      elsif line.include?("boots_slot~")
-        @boots_slot = line.split("~").last().strip()
-      elsif line.include?("gloves_slot~")
-        @gloves_slot = line.split("~").last().strip()
-      elsif line.include?("ring_slot_one~")
-        @ring_slot_one = line.split("~").last().strip()
-      elsif line.include?("ring_slot_two~")
-        @ring_slot_two = line.split("~").last().strip()
-      elsif line.include?("neck_slot~")
-        @neck_slot = line.split("~").last().strip()
-      elsif line.include?("head_slot~")
-        @head_slot = line.split("~").last().strip()
-      elsif line.include?("attuned_item_one~")
-        @attuned_item_one = line.split("~").last().strip()
-      elsif line.include?("attuned_item_two~")
-        @attuned_item_two = line.split("~").last().strip()
-      elsif line.include?("attuned_item_three~")
-        @attuned_item_three = line.split("~").last().strip()
-      elsif line.include?("spells~")
-        temp_spells = line.split("\"]").first().split("[\"").last()
-        if temp_spells.include?("\", \"")
-          spells = temp_spells.split("\", \"")
-          spells.each() do |spell|
-            add_spell(spell)
-          end
-        else
-          add_spell(temp_spells)
-        end
-      end
-    end
-  end
-
   def to_string()
     return "Name: #{@character_name}
       Race: #{@race}
@@ -285,5 +159,3 @@ class Character < CharacterUtility
       spells: #{list_spells()}"
   end
 end
-
-# char = Character.new()
