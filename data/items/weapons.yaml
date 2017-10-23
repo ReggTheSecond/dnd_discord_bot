@@ -1,0 +1,70 @@
+---
+- !ruby/object:Weapon
+  currency: !ruby/object:Currency
+    value_of_gold: 100
+    value_of_silver: 10
+  item_name: Short Sword
+  item_decription: A bloody sword
+  proficiency_required: simple melee
+  cost: 123
+  weight: '15'
+  magical: 'false'
+  damage_die: 1d6
+  finesse: true
+  heavy: false
+  light: true
+  loading: false
+  short_range: 0
+  long_range: 0
+  reach: false
+  special: false
+  thrown: false
+  two_handed: false
+  versatile: false
+  ammunition: false
+- !ruby/object:Weapon
+  currency: !ruby/object:Currency
+    value_of_gold: 100
+    value_of_silver: 10
+  item_name: Battle Axe
+  item_decription: A bloody big Axe
+  proficiency_required: martial melee
+  cost: 153
+  weight: '15'
+  magical: 'false'
+  damage_die: 1d10
+  finesse: false
+  heavy: true
+  light: false
+  loading: false
+  short_range: 0
+  long_range: 0
+  reach: false
+  special: false
+  thrown: false
+  two_handed: false
+  versatile: false
+  ammunition: false
+- !ruby/object:Weapon
+  currency: !ruby/object:Currency
+    value_of_gold: 100
+    value_of_silver: 10
+  item_name: Long Sword
+  item_decription: A long sword, it's long I guess
+  proficiency_required: martial melee
+  cost: 90
+  weight: '15'
+  magical: 'false'
+  damage_die: 1d10
+  finesse: false
+  heavy: false
+  light: false
+  loading: false
+  short_range: 0
+  long_range: 0
+  reach: false
+  special: false
+  thrown: false
+  two_handed: false
+  versatile: false
+  ammunition: false
