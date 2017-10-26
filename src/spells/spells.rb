@@ -23,48 +23,6 @@ class Spells
     @seventh_level_spells = Array.new()
     @eighth_level_spells = Array.new()
     @ninth_level_spells = Array.new()
-    load_spells("cantrips")
-    load_spells("1st")
-    load_spells("2nd")
-    load_spells("3rd")
-    load_spells("4th")
-    load_spells("5th")
-    load_spells("6th")
-    load_spells("7th")
-    load_spells("8th")
-    load_spells("9th")
-  end
-
-  def load_spells(spell_level)
-    file = File.open("data/spells/#{spell_level}.csv")
-    file.each_line do |line|
-      spell = Spell.new()
-      details = line.split("~")
-      details.each do |detail|
-        if detail.include?("spell=")
-          spell.spell_name = detail.split("=").last()
-        elsif detail.include?("spell_level=")
-          spell.spell_level = detail.split("=").last().to_i
-        elsif detail.include?("school=")
-          spell.school = detail.split("=").last()
-        elsif detail.include?("casting_time=")
-          spell.casting_time = detail.split("=").last()
-        elsif detail.include?("range=")
-          spell.range = detail.split("=").last()
-        elsif detail.include?("components=")
-          spell.components = detail.split("=").last()
-        elsif detail.include?("materials=")
-          spell.materials = detail.split("=").last()
-        elsif detail.include?("duration=")
-          spell.duration = detail.split("=").last()
-        elsif detail.include?("description=")
-          spell.spell_description = detail.split("=").last().gsub("$", "\n")
-        elsif detail.include?("at_higher_levels=")
-          spell.at_higher_levels = detail.split("=").last().gsub("$", "\n")
-        end
-      end
-      store_spell(spell_level, spell)
-    end
   end
 
   def store_spell(spell_level, spell)
@@ -191,6 +149,6 @@ class Spells
     end
   end
 end
-
-spells = Spells.new()
-spells.puts_spells
+#
+# spells = Spells.new()
+# spells.puts_spells
