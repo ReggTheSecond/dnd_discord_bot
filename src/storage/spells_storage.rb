@@ -12,34 +12,47 @@ class SpellStorage
     @path = "data/spells/"
     @files = Dir.glob("#{@path}*.yaml")
     @files.each do |file|
-      spell = spell.new()
-      spell = load_spells_as_YAML(file.split("/").last().split(".").first())
+      # spell = Spell.new()
+      spell = load_spell_as_YAML(file.split("/").last().split(".").first())
       @spells << spell
     end
   end
 
-  def save_spell_as_YAML(file_name, spell_level)
-    File.open("data/spells/#{file_name}.yaml", 'w') do |file|
-        file.puts YAML::dump(spell_level)
+  def is_a_spell(spell_name)
+    spell_or_not = false
+    @spells.each do |spell|
+      spell_or_not =  spell_name == spell.spell_name
+    end
+  end
+
+  def save_spell_as_YAML(spell)
+    File.open("data/spells/#{spell.spell_name}.yaml", 'w') do |file|
+        file.puts YAML::dump(spell)
     end
   end
 
   def load_spell_as_YAML(file)
-    return YAML.load_file(file)
+    return YAML.load_file("data/spells/#{file}.yaml")
   end
 end
 
-store = SpellStorage.new()
-
-spells = Spells.new()
-
-store.save_spell_as_YAML("cantrips", spells.cantrips)
-store.save_spell_as_YAML("1st", spells.first_level_spells)
-store.save_spell_as_YAML("2nd", spells.second_level_spells)
-store.save_spell_as_YAML("3rd", spells.thrid__level_spells)
-store.save_spell_as_YAML("4th", spells.fourth_level_spells)
-store.save_spell_as_YAML("5th", spells.fifth_level_spells)
-store.save_spell_as_YAML("6th", spells.sixth_level_spells)
-store.save_spell_as_YAML("7th", spells.seventh_level_spells)
-store.save_spell_as_YAML("8th", spells.eighth_level_spells)
-store.save_spell_as_YAML("9th", spells.ninth_level_spells)
+# store = SpellStorage.new()
+#
+#
+#
+# spell = Spell.new()
+# spell.spell_name = "Magic Missile"
+# spell.spell_level = 1
+# spell.school = "Evocation"
+# spell.casting_time = "1 action"
+# spell.range = "120 feet"
+# spell.components = "V, S"
+# spell.duration = "Instantaneous"
+# spell.spell_description = "You create three glowing darts of magical force. Each dart hits
+#   a creature of your choice that you can see within range. A dart deals 1d4+1 force
+#   damage to its target. The darts all strike simultaneously and you can direct them
+#   to hit one creature or several."
+# spell.at_higher_levels = "When you cast this spell using a spell slot of 2nd level or higher,
+#     the spell creates one more dart for each slot above 1st."
+#
+# store.save_spell_as_YAML(spell)

@@ -3,6 +3,7 @@ require_relative '../classes.rb'
 require_relative '../dice_roller/dice_roller.rb'
 require_relative '../proficiencies.rb'
 require_relative '../storage/items_storage.rb'
+require_relative '../storage/spells_storage.rb'
 require_relative 'character_utility.rb'
 require "yaml"
 
@@ -38,7 +39,7 @@ class Character < CharacterUtility
   attr_accessor :classes
   attr_accessor :skills
   attr_accessor :items
-  attr_accessor :spells_list
+  attr_accessor :spells_storage
 
   def initialize()
     roll_stats()
@@ -47,7 +48,7 @@ class Character < CharacterUtility
     @classes = Classes.new()
     @skills = Skills.new()
     @items = ItemsControl.new()
-    @spells_list = Spells.new()
+    @spells_storage = SpellStorage.new()
     @spells = Array.new()
   end
 
@@ -159,3 +160,19 @@ class Character < CharacterUtility
       spells: #{list_spells()}"
   end
 end
+
+# char = Character.new()
+# char.character_name = "Narset"
+# char.race = "Elf"
+# char.character_class = "Wizard"
+# char.experience = 800
+# char.add_proficiency "intelligence"
+# char.add_proficiency "wisdom"
+# char.add_proficiency "light"
+# char.add_proficiency "arcana"
+# char.add_proficiency "history"
+# char.add_proficiency "insight"
+# char.alighnment = "Good"
+# char.character_weapon = "Shortsword"
+# char.add_spell("Magic Missile")
+# char.add_spell("Acid Arrow")
