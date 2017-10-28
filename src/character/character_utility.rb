@@ -90,7 +90,7 @@ class CharacterUtility
   end
 
   def add_spell(new_spell)
-    if spells_list.is_a_spell?(new_spell)
+    if @spells_storage.is_a_spell(new_spell)
       @spells << new_spell
     end
   end

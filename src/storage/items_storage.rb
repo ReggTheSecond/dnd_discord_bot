@@ -79,9 +79,3 @@ class ItemsControl
     end
   end
 end
-
-# items = ItemsControl.new
-#
-# puts items.items_to_string()
-# puts items.weapons_to_string()
-# puts items.armour_to_string()
