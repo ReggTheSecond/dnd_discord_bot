@@ -1,3 +1,5 @@
+require "yaml"
+
 class DnDClass
   attr_accessor :class_name
   attr_accessor :class_archetypes
@@ -6,10 +8,8 @@ class DnDClass
   attr_accessor :hit_dice
   attr_accessor :saving_throws
   attr_accessor :available_spells
-  attr_accessor :available_skills
-  attr_accessor :weapon_proficiencies
-  attr_accessor :armour_proficiencies
-  attr_accessor :tool_proficiencies
+  attr_accessor :proficiencies
+  attr_accessor :starting_equipment
 
   attr_accessor :number_of_cantrips
   attr_accessor :first_level_spell_slots
@@ -22,27 +22,6 @@ class DnDClass
   attr_accessor :eight_level_spell_slots
   attr_accessor :nineth_level_spell_slots
 
-  def initialize(dnd_class)
-    inport_class(dnd_class)
-  end
-
-  def inport_class(dnd_class_name)
-    dnd_class = File.open("/data/classes/#{dnd_class_name}.csv", 'r')
-    dnd_class.each_line() do |line|
-      case line
-      when /^class_name~/
-      when /^archetype~/
-      when /^hit dice~/
-      when /^hit points at first level~/
-      when /^hit points at higher levels~/
-      when /^saving throws~/
-      when /^skills proficiencies~/
-      when /^weapon proficiencies~/
-      when /^armour proficiencies~/
-      when /^tool proficiencies~/
-      when /^spell save DC~/
-      when /^spell attack modifier~/
-      end
-    end
+  def initialize()
   end
 end

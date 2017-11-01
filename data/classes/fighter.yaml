@@ -1,0 +1,24 @@
+--- !ruby/object:DnDClass
+class_name: "Fighter"
+class_archetypes:
+- dude_bro
+hit_points_at_first_level: "10 + constitution modifier"
+hit_points_at_higher_levels: "1d10 + constitution modifier per fighter level"
+hit_dice: "1d10 per fighter level"
+saving_throws:
+- intelligence
+- wisdom
+proficiencies:
+- arcana
+- history
+- insight
+- investigation
+- medicine
+- religion
+- daggers
+- darts
+- slings
+- quarterstaffs
+- light_crossbows
+available_spells:
+starting_equipment: "You start with the following items, plus anything provided by your background.\n\n(a) Chain Mail or (b) leather, Longbow, and 20 Arrows\n(a) a martial weapon and a Shield or (b) two martial Weapons\n(a  a Light Crossbow and 20 bolts or (b) two handaxes\n(a) a Dungeoneer's Pack or (b) an Explorer's Pack"

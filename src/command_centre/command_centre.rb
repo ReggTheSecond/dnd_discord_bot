@@ -44,5 +44,3 @@ class CommandCentre < CommandParsingUtility
     return return_character
   end
 end
-
-# thing = CommandCentre.new()
