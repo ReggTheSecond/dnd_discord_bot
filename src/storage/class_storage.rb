@@ -31,5 +31,5 @@ end
 
 thing = ClassStorage.new()
 
-puts thing.classes[0].class_name
-puts thing.classes[1].class_name
+puts thing.classes[0].to_string
+puts thing.classes[1].to_string

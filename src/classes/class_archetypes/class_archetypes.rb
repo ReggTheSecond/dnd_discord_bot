@@ -1,28 +1,8 @@
 require "yaml"
-require_relative '../spells/spell.rb'
 
-class DnDClass
-  attr_accessor :class_name
-  attr_accessor :class_archetypes
-  attr_accessor :hit_points_at_first_level
-  attr_accessor :hit_points_at_higher_levels
-  attr_accessor :hit_dice
-  attr_accessor :saving_throws
-  attr_accessor :available_spells
-  attr_accessor :proficiencies
-  attr_accessor :starting_equipment
-
-  attr_accessor :number_of_cantrips
-  attr_accessor :first_level_spell_slots
-  attr_accessor :second_level_spell_slots
-  attr_accessor :third_level_spell_slots
-  attr_accessor :fourth_level_spell_slots
-  attr_accessor :fifth_level_spell_slots
-  attr_accessor :sixth_level_spell_slots
-  attr_accessor :seventh_level_spell_slots
-  attr_accessor :eight_level_spell_slots
-  attr_accessor :nineth_level_spell_slots
-
+class ClassArchetypes
+  attr_accessor :archetype_name
+  attr_accessor :archetype_description
   attr_accessor :level_one_ability_name
   attr_accessor :level_two_ability_name
   attr_accessor :level_three_ability_name
@@ -64,14 +44,39 @@ class DnDClass
   attr_accessor :level_nineteen_ability_description
   attr_accessor :level_twenty_ability_description
 
-  def initialize()
+  def abilities(ability_name, ability_description)
+    index = 0
+    returnable = ""
+    if ability_name.class.to_s == "Array"
+      ability_name.each() do |name|
+        returnable << "#{name}\n#{ability_description[index]}\n\n"
+        index = index + 1
+      end
+    elsif ability_name == ""
+      returnable << ""
+    else
+      returnable = "#{ability_name}\n#{ability_description}\n"
+    end
+    return returnable
   end
 
   def to_string()
-    return "#{class_name}\n#{class_archetypes}\n\n#{level_two_ability_name}\n#{level_two_ability_description}"
+    return "#{archetype_name}\n#{archetype_description}\n
+#{abilities(level_one_ability_name, level_one_ability_description)}
+#{abilities(level_two_ability_name, level_two_ability_description)}
+#{abilities(level_three_ability_name, level_three_ability_description)}
+#{abilities(level_six_ability_name, level_six_ability_description)}
+#{abilities(level_seven_ability_name, level_seven_ability_description)}"
   end
 end
 
-thing = DnDClass.new()
-thing = YAML.load_file("data/classes/wizard.yaml")
-puts thing.to_string()
+thing = ClassArchetypes.new()
+thing = YAML.load_file("data/classes/class_archetypes/school_of_evocation.yaml")
+
+puts thing.to_string
+
+
+being = ClassArchetypes.new()
+being = YAML.load_file("data/classes/class_archetypes/champion.yaml")
+
+puts being.to_string
