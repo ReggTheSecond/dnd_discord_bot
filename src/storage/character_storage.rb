@@ -28,24 +28,26 @@ class CharacterStorage
     return YAML.load_file("data/characters/#{file}.yaml")
   end
 end
+
+# store = CharacterStorage.new()
+# items = ItemsControl.new()
 #
-store = CharacterStorage.new()
-items = ItemsControl.new()
-
-char = Character.new()
-char.character_name = "Tia"
-char.race = "Dwarf"
-char.character_class = "Bard"
-char.experience = 100
-char.add_proficiency "intelligence"
-char.add_proficiency "wisdom"
-char.add_proficiency "light"
-char.add_proficiency "arcana"
-char.add_proficiency "history"
-char.add_proficiency "insight"
-char.alighnment = "Evil"
-char.character_weapon = items.get_weapon("long sword")
-char.add_spell("Magic Missile")
-char.add_spell("Acid Arrow")
-
-store.save_character_as_YAML(char)
+# char = Character.new()
+# char.character_name = "Bilge"
+# char.race = "Human"
+# char.character_class = "Fighter"
+# char.experience = 1200
+# char.add_proficiency "constitution"
+# char.add_proficiency "strength"
+# char.add_proficiency "light"
+# char.add_proficiency "long sword"
+# char.add_proficiency "athletics"
+# char.add_proficiency "perception"
+# char.add_proficiency "survival"
+# char.add_expertise "athletics"
+# char.alighnment = "Lawful Evil"
+# char.character_weapon = items.get_weapon("long sword")
+# char.add_spell("Magic Missile")
+# char.add_spell("Acid Arrow")
+#
+# store.save_character_as_YAML(char)

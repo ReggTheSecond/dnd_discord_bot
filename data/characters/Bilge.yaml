@@ -1,0 +1,371 @@
+--- !ruby/object:Character
+strength: 12
+constitution: 10
+dexterity: 16
+intelligence: 8
+wisdom: 18
+charisma: 13
+proficiency:
+- constitution
+- strength
+- light
+- athletics
+- perception
+- survival
+expertise:
+- athletics
+classes: !ruby/object:Classes
+  classes:
+  - barbarian
+  - bard
+  - cleric
+  - druid
+  - fighter
+  - monk
+  - paladin
+  - ranger
+  - rouge
+  - sorcerer
+  - warlock
+  - wizard
+  primal_paths:
+  - path of the berserker
+  - path of the totem warrior
+  bardic_schools:
+  - school of lore
+skills: !ruby/object:Skills
+  strength_based_skills: &1
+  - athletics
+  dexterity_based_skills: &2
+  - acrobatics
+  - slight of hand
+  - stealth
+  intelligence_based_skills: &3
+  - arcana
+  - history
+  - investigation
+  - nature
+  - religion
+  wisdom_based_skills: &4
+  - animal handeling
+  - insight
+  - medicine
+  - perception
+  - survival
+  charisma_based_skills: &5
+  - deception
+  - intimidation
+  - performance
+  - " persuasion"
+  skills:
+  - *1
+  - *2
+  - *3
+  - *4
+  - *5
+items: !ruby/object:ItemsControl
+  items:
+  - !ruby/object:Item
+    currency: !ruby/object:Currency
+      value_of_gold: 100
+      value_of_silver: 10
+    item_name: Salad
+    item_decription: A bloody salad
+    cost: 123
+    weight: '15'
+    magical: 'false
+
+'
+  weapons:
+  - !ruby/object:Weapon
+    currency: !ruby/object:Currency
+      value_of_gold: 100
+      value_of_silver: 10
+    item_name: Short Sword
+    item_decription: A bloody sword
+    proficiency_required: simple melee
+    cost: 123
+    weight: '15'
+    magical: 'false'
+    damage_die: 1d6
+    finesse: true
+    heavy: false
+    light: true
+    loading: false
+    short_range: 0
+    long_range: 0
+    reach: false
+    special: false
+    thrown: false
+    two_handed: false
+    versatile: false
+    ammunition: false
+  - !ruby/object:Weapon
+    currency: !ruby/object:Currency
+      value_of_gold: 100
+      value_of_silver: 10
+    item_name: Battle Axe
+    item_decription: A bloody big Axe
+    proficiency_required: martial melee
+    cost: 153
+    weight: '15'
+    magical: 'false'
+    damage_die: 1d10
+    finesse: false
+    heavy: true
+    light: false
+    loading: false
+    short_range: 0
+    long_range: 0
+    reach: false
+    special: false
+    thrown: false
+    two_handed: false
+    versatile: false
+    ammunition: false
+  - !ruby/object:Weapon
+    currency: !ruby/object:Currency
+      value_of_gold: 100
+      value_of_silver: 10
+    item_name: Long Sword
+    item_decription: A long sword, it's long I guess
+    proficiency_required: martial melee
+    cost: 90
+    weight: '15'
+    magical: 'false'
+    damage_die: 1d10
+    finesse: false
+    heavy: false
+    light: false
+    loading: false
+    short_range: 0
+    long_range: 0
+    reach: false
+    special: false
+    thrown: false
+    two_handed: false
+    versatile: false
+    ammunition: false
+  armour:
+  - !ruby/object:Armour
+    currency: !ruby/object:Currency
+      value_of_gold: 100
+      value_of_silver: 10
+    item_name: Chain Mail
+    item_decription: A bloody bit of chain
+    cost: 123
+    weight: '15'
+    magical: 'false'
+    armour_type: 'false'
+    armor_class: '10'
+    strength_required: '10'
+spells_storage: !ruby/object:SpellStorage
+  spells:
+  - !ruby/object:Spell
+    spell_name: Acid Arrow
+    spell_level: 2
+    school: Evocation
+    casting_time: 1 action
+    range: 90 feet
+    components: V S M
+    duration: Instantaneous
+    spell_description: A shimmering green arrow streaks toward a target within range
+      and bursts in a spray of acid. Make a ranged spell Attack against the target.
+      On a hit, the target takes 4d4 acid damage immediately and 2d4 acid damage at
+      the end of its next turn. On a miss, the arrow splashes the target with acid
+      for half as much of the initial damage and no damage at the end of its next
+      turn.
+    at_higher_levels: "When you cast this spell using a spell slot of 3rd level or
+      higher, the damage (both initial and later) increases by 1d4 for each slot level
+      above 2nd.\r\n"
+    materials: Powdered rhubarb leaf and an adder's stomach
+  - !ruby/object:Spell
+    spell_name: Animate Dead
+    spell_level: 3
+    school: Necromancy
+    casting_time: 1 minute
+    range: 120 feet
+    components: V S M
+    duration: Instantaneous
+    spell_description: |-
+      This spell creates an Undead servant. Choose a pile of bones or a corpse of a Medium or Small humanoid within range. Your spell imbues the target with a foul mimicry of life, raising it as an Undead creature. The target becomes a Skeleton if you chose bones or a Zombie if you chose a corpse (the DM has the creature's game statistics).
+      On each of your turns, you can use a Bonus Action to mentally Command any creature you made with this spell if the creature is within 60 feet of you (if you control multiple creatures, you can Command any or all of them at the same time, issuing the same Command to each one). You decide what action the creature will take and where it will move during its next turn, or you can issue a general Command, such as to guard a particular chamber or corridor. If you issue no commands, the creature only defends itself against hostile creatures. Once given an order, the creature continues to follow it until its task is complete.
+      The creature is under your control for 24 hours, after which it stops obeying any Command you've given it. To maintain the control of the creature for another 24 hours, you must cast this spell on the creature again before the current 24-hour period ends. This use of the spell reasserts your control over up to four creatures you have animated with this spell, rather than animating a new one.
+    at_higher_levels: "When you cast this spell using a spell slot of 4th level or
+      higher, you animate or reassert control over two additional Undead creatures
+      for each slot above 3rd. Each of the creatures must come from a different corpse
+      or pile of bones.\r\n"
+    materials: A drop of blood, a piece of flesh, and a pinch of bone dust
+  - !ruby/object:Spell
+    spell_name: Astral Projection
+    spell_level: 9
+    school: Necromancy
+    casting_time: 1 hour
+    range: 10 feet
+    components: V, S, M
+    duration: Special
+    spell_description: |-
+      You and up to eight willing creatures within range project your astral bodies into the Astral Plane (the spell fails and the casting is wasted if you are already on that plane). The material body you leave behind is Unconscious and in a state of suspended animation, it doesn't need food or air and doesn't age.
+      Your astral body resembles your mortal form in almost every way, replicating your game Statistics and possessions. The principal difference is the addition of a silvery cord that extends from between your shoulder blades and trails behind you, fading to Invisibility after 1 foot. This cord is your tether to your material body. As long as the tether remains intact, you can find your way home. If the cord is cut-something that can happen only when an effect specifically states that it does-your soul and body are separated, killing you instantly.
+      Your astral form can freely travel through the Astral Plane and can pass through portals there leading to any other plane. If you enter a new plane or return to the plane you were on when casting this spell, your body and possessions are transported along the silver cord, allowing you to re-enter your body as you enter the new plane. Your astral form is a separate incarnation. Any damage or other effects that apply to it have no effect on your physical body, nor do they persist when you return to it.
+      The spell ends for you and your companions when you use your action to dismiss it. When the spell ends, the affected creature returns to its physical body, and it awakens.
+      The spell might also end early for you or one of your companions. A successful Dispel Magic spell used against an astral or physical body ends the spell for that creature. If a creature's original body or its astral form drops to 0 hit points, the spell ends for that creature. If the spell ends and the silver cord is intact, the cord pulls the creature's astral form back to its body, ending its state of suspended animation.
+      If you are returned to your body prematurely, your companions remain in their astral forms and must find their own way back to their bodies, usually by Dropping to 0 Hit Points.
+    at_higher_levels: " \r\n"
+  - !ruby/object:Spell
+    spell_name: Magic Missile
+    spell_level: 1
+    school: Evocation
+    casting_time: 1 action
+    range: 120 feet
+    components: V, S
+    duration: Instantaneous
+    spell_description: |-
+      You create three glowing darts of magical force. Each dart hits
+        a creature of your choice that you can see within range. A dart deals 1d4+1 force
+        damage to its target. The darts all strike simultaneously and you can direct them
+        to hit one creature or several.
+    at_higher_levels: |-
+      When you cast this spell using a spell slot of 2nd level or higher,
+          the spell creates one more dart for each slot above 1st.
+  - !ruby/object:Spell
+    spell_name: Chain Lightning
+    spell_level: 6
+    school: Evocation
+    casting_time: 1 action
+    range: 150 feet
+    components: V S M
+    duration: Instantaneous
+    spell_description: |-
+      You create a bolt of lightning that arcs toward a target of your choice that you can see within range. Three bolts then leap from that target to as many as three other Targets, each of which must be within 30 feet of the first target. A target can be a creature or an object and can be targeted by only one of the bolts.
+      A target must make a Dexterity saving throw. The target takes 10d8 lightning damage on a failed save, or half as much on a successful one.
+    at_higher_levels: "When you cast this spell using a spell slot of 7th level or
+      higher, one additional bolt leaps from the first target to another target for
+      each slot level above 6th.\r\n"
+    materials: A bit of fur; a piece of amber, glass, or a crystal rod; and three
+      silver pins
+  - !ruby/object:Spell
+    spell_name: Animate Objects
+    spell_level: 5
+    school: Transmutation
+    casting_time: 1 action
+    range: 120 feet
+    components: V S
+    duration: Up to 1 minute
+    spell_description: |-
+      Objects come to life at your Command. Choose up to ten nonmagical Objects within range that are not being worn or carried. Medium Targets count as two Objects, Large Targets count as four Objects, Huge Targets count as eight Objects. You can't animate any object larger than Huge. Each target animates and becomes a creature under your control until the spell ends or until reduced to 0 hit points.
+      As a Bonus Action, you can mentally Command any creature you made with this spell if the creature is within 500 feet of you (if you control multiple creatures, you can Command any or all of them at the same time, issuing the same Command to each one). You decide what action the creature will take and where it will move during its next turn, or you can issue a general Command, such as to guard a particular chamber or corridor. If you issue no commands, the creature only defends itself against hostile creatures. Once given an order, the creature continues to follow it until its task is complete.
+      Animated Object Statistics
+      Tiny - HP: 20, AC: 18, Attack: +8 to hit, 1d4 + 4 damage, Str: 4, Dex: 18
+      Small - HP: 25, AC: 16, Attack: +6 to hit, 1d8 + 2 damage, Str: 6, Dex: 14
+      Medium - HP: 40, AC: 13, Attack: +5 to hit, 2d6 + 1 damage, Str: 10, Dex: 12
+      Large - HP: 50, AC: 10, Attack: +6 to hit, 2d10 + 2 damage, Str: 14, Dex: 10
+      An animated object is a construct with AC, hit points, attacks, Strength, and Dexterity determine by its size. Its Constitution is 10 and its Intelligence and Wisdom are 3, and its Charisma is 1. Its speed is 30 feet, if the Objects lack legs or other appendages it can use for locomotion, it instead has a flying speed of 30 feet and can hover. If the object is securely attached to a surface or larger object, such as a chain bolted to a wall, its speed is 0. It has blindsight with a radius of 30 feet and is blind beyond that distance. When the animated object drops to 0 hit points, it reverts to its original object form, and any remaining damage carries over to its original object form.
+      If you Command an object to Attack, it can make a single melee Attack against a creature within 5 feet of it. It makes a slam Attack with an Attack bonus and bludgeoning damage determine by its size. The DM might rule that a specific object inflicts slashing or piercing damage based on its form.
+    at_higher_levels: "If you cast this spell using a spell slot of 6th level or higher,
+      you can animate two additional Objects for each slot level above 5th.\r\n"
+    materials: materials
+  - !ruby/object:Spell
+    spell_name: Chill Touch
+    spell_level: 0
+    school: Necromancy
+    casting_time: 1 action
+    range: 120 feet
+    components: V, S
+    duration: Instantaneous
+    spell_description: |-
+      You create a ghostly, skeletal hand in the space of a creature within range. Make a ranged spell Attack against the creature to assail it with the chill of the grave. On a hit, the target takes 1d8 necrotic damage, and it can't regain hit points until the start of your next turn. Until then, the hand clings to the target.
+      If you hit an Undead target, it also has disadvantage on Attack rolls against you until the end of your next turn.
+      This spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8).
+    at_higher_levels: " \r\n"
+  - !ruby/object:Spell
+    spell_name: Arcane Sword
+    spell_level: 7
+    school: Evocation
+    casting_time: 1 action
+    range: range
+    components: V S M
+    duration: Up to 1 minute
+    spell_description: |-
+      You create a sword-shaped plane of force that hovers within range. It lasts for the Duration.
+      When the sword appears, you make a melee spell Attack against a target of your choice within 5 feet of the sword. On a hit. the target takes 3d10 force damage. Until the spell ends, you can use a Bonus Action on each of your turns to move the sword up to 20 feet to a spot you can see and repeat this Attack against the same target or a different one.
+    at_higher_levels: " \r\n"
+    materials: A miniature platinum sword with a grip and pommel of copper and zinc,
+      worth 250 gp
+  - !ruby/object:Spell
+    spell_name: Antimagic Field
+    spell_level: 8
+    school: Abjuration
+    casting_time: 1 action
+    range: Self
+    components: V S M
+    duration: Up to 1 hour
+    spell_description: |-
+      A 10-foot-radius Invisible Sphere of antimagic surrounds you. This area is divorced from the magical energy that suffuses the multiverse. Within the Sphere, Spells can't be cast, summoned creatures disappear, and even Magic Items become mundane. Until the spell ends, the Sphere moves with you, centered on you.
+      Spells and other magical effects, except those created by an artifact or a deity, are suppressed in the Sphere and can't protrude into it. A slot expended to cast a suppressed spell is consumed. While an effect is suppressed, it doesn't function, but the time it spends suppressed counts against its Duration.
+      Targeted Effects: Spells and other magical effects, such as Magic Missile and Charm Person, that target a creature or an object in the Sphere have no effect on that target.
+      Areas of Magic: The area of another spell or magical effect, such as Fireball, can't extend into the Sphere. If the Sphere overlaps an area of magic, the part of the area that is covered by the Sphere is suppressed. For example, the flames created by a Wall of Fire are suppressed within the Sphere, creating a gap in the wall if the overlap is large enough.
+      Spells: Any active spell or other magical effect on a creature or an object in the Sphere is suppressed while the creature or object is in it.
+      Magic Items: The properties and powers of Magic Items are suppressed in the Sphere. For example, a +1 long sword in the Sphere functions as a nonmagical long sword. A magic weapon's properties and powers are suppressed if it is used against a target in the Sphere or wielded by an attacker in the Sphere. If a Magic Weapon or piece of magic ammunition fully leaves the Sphere (For example, if you fire a magic arrow or throw a magic spear at a target outside the sphere), the magic of the item ceases to be suppressed as soon as it exits.
+      Magical Travel: Teleportation and Planar Travel fail to work in the Sphere, whether the Sphere is the destination or the departure point for such magical travel. A portal to another location, world, or plane of existence, as well as an opening to an extradimensional space such as that created by the Rope Trick Spells, temporarily closes while in the Sphere.
+      Creatures and Objects: A creature or object summoned or created by magic temporarily winks out of existence in the Sphere. Such a creature instantly reappears once the space the creature occupied is no longer within the Sphere.
+      Dispel Magic: Spells and magical effects such as Dispel Magic have no effect on the Sphere. Likewise, the spheres created by different antimagic field Spells don't nullify each other.
+    at_higher_levels: " \r\n"
+    materials: A pinch of powdered iron or iron filings
+  - !ruby/object:Spell
+    spell_name: Arcane Eye
+    spell_level: 4
+    school: Divination
+    casting_time: 1 action
+    range: 120 feet
+    components: V S M
+    duration: Up to 1 hour
+    spell_description: |-
+      You create an Invisible, magical eye within range that hovers in the air for the Duration.
+      You mentally receive visual information from the eye, which has normal vision and Darkvision out to 30 feet. The eye can look in every direction.
+      As an action, you can move the eye up to 30 feet in any direction. There is no limit to how far away from you the eye can move, but it can't enter another plane of existence. A solid barrier blocks the eye's Movement, but the eye can pass through an opening as small as 1 inch in diameter.
+    at_higher_levels: " \r\n"
+    materials: A bit of bat fur
+  path: data/spells/
+  files:
+  - data/spells/Acid Arrow.yaml
+  - data/spells/Animate Dead.yaml
+  - data/spells/Astral Projection.yaml
+  - data/spells/Magic Missile.yaml
+  - data/spells/Chain Lightning.yaml
+  - data/spells/Animate Objects.yaml
+  - data/spells/Chill Touch.yaml
+  - data/spells/Arcane Sword.yaml
+  - data/spells/Antimagic Field.yaml
+  - data/spells/Arcane Eye.yaml
+spells:
+- Magic Missile
+- Acid Arrow
+character_name: Bilge
+race: Human
+character_class: Fighter
+experience: 1200
+alighnment: Lawful Evil
+character_weapon: !ruby/object:Weapon
+  currency: !ruby/object:Currency
+    value_of_gold: 100
+    value_of_silver: 10
+  item_name: Long Sword
+  item_decription: A long sword, it's long I guess
+  proficiency_required: martial melee
+  cost: 90
+  weight: '15'
+  magical: 'false'
+  damage_die: 1d10
+  finesse: false
+  heavy: false
+  light: false
+  loading: false
+  short_range: 0
+  long_range: 0
+  reach: false
+  special: false
+  thrown: false
+  two_handed: false
+  versatile: false
+  ammunition: false

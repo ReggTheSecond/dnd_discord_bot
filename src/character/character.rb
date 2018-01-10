@@ -164,20 +164,3 @@ class Character < CharacterUtility
       spells: #{list_spells()}"
   end
 end
-
-# char = Character.new()
-# items = ItemsControl.new()
-# char.character_name = "Narset"
-# char.race = "Elf"
-# char.character_class = "Wizard"
-# char.experience = 800
-# char.add_proficiency "intelligence"
-# char.add_proficiency "wisdom"
-# char.add_proficiency "light"
-# char.add_proficiency "arcana"
-# char.add_proficiency "history"
-# char.add_proficiency "insight"
-# char.alighnment = "Good"
-# char.character_weapon = items.get_weapon("short sword")
-# char.add_spell("Magic Missile")
-# char.add_spell("Acid Arrow")
