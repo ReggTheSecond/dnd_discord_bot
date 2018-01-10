@@ -16,11 +16,11 @@ class Spell
     if @spell_level == 0
       return "#{@school} cantrip"
     elsif @spell_level == 2
-      return "#{@spell_level}nd-level#{@school}"
+      return "#{@spell_level}nd-level #{@school}"
     elsif @spell_level == 3
-      return "#{@spell_level}rd-level#{@school}"
+      return "#{@spell_level}rd-level #{@school}"
     elsif @spell_level == 1
-      return "#{@spell_level}st-level#{@school}"
+      return "#{@spell_level}st-level #{@school}"
     else
       return "#{@spell_level}th-level #{@school}"
     end

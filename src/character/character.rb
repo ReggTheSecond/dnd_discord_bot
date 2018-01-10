@@ -139,7 +139,11 @@ class Character < CharacterUtility
   end
 
   def is_proficient(skill)
-    return @proficiency.include?(skill.downcase)
+    if skill.class.to_s == "Weapon"
+      return @proficiency.include?(skill.item_name.downcase)
+    else
+      return @proficiency.include?(skill.downcase)
+    end
   end
 
   def is_expert(skill)
@@ -162,6 +166,7 @@ class Character < CharacterUtility
 end
 
 # char = Character.new()
+# items = ItemsControl.new()
 # char.character_name = "Narset"
 # char.race = "Elf"
 # char.character_class = "Wizard"
@@ -173,6 +178,6 @@ end
 # char.add_proficiency "history"
 # char.add_proficiency "insight"
 # char.alighnment = "Good"
-# char.character_weapon = "Shortsword"
+# char.character_weapon = items.get_weapon("short sword")
 # char.add_spell("Magic Missile")
 # char.add_spell("Acid Arrow")

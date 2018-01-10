@@ -70,13 +70,13 @@ class ClassArchetypes
   end
 end
 
-thing = ClassArchetypes.new()
-thing = YAML.load_file("data/classes/class_archetypes/school_of_evocation.yaml")
-
-puts thing.to_string
-
-
-being = ClassArchetypes.new()
-being = YAML.load_file("data/classes/class_archetypes/champion.yaml")
-
-puts being.to_string
+# thing = ClassArchetypes.new()
+# thing = YAML.load_file("data/classes/class_archetypes/school_of_evocation.yaml")
+#
+# puts thing.to_string
+#
+#
+# being = ClassArchetypes.new()
+# being = YAML.load_file("data/classes/class_archetypes/champion.yaml")
+#
+# puts being.to_string
