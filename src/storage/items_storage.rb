@@ -33,7 +33,7 @@ class ItemsControl
 
   def get_weapon(weapon)
     @weapons.each() do |thing|
-      if thing.item_name == weapon
+      if thing.item_name.downcase == weapon.downcase
         return thing
       end
     end

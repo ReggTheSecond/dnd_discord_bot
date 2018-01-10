@@ -1,4 +1,5 @@
 require_relative '../character/character.rb'
+require_relative '../storage/items_storage.rb'
 require "yaml"
 
 class CharacterStorage
@@ -27,22 +28,23 @@ class CharacterStorage
     return YAML.load_file("data/characters/#{file}.yaml")
   end
 end
-
+#
 store = CharacterStorage.new()
+items = ItemsControl.new()
 
 char = Character.new()
-char.character_name = "Narset"
-char.race = "Elf"
-char.character_class = "Wizard"
-char.experience = 800
+char.character_name = "Tia"
+char.race = "Dwarf"
+char.character_class = "Bard"
+char.experience = 100
 char.add_proficiency "intelligence"
 char.add_proficiency "wisdom"
 char.add_proficiency "light"
 char.add_proficiency "arcana"
 char.add_proficiency "history"
 char.add_proficiency "insight"
-char.alighnment = "Good"
-char.character_weapon = "Shortsword"
+char.alighnment = "Evil"
+char.character_weapon = items.get_weapon("long sword")
 char.add_spell("Magic Missile")
 char.add_spell("Acid Arrow")
 

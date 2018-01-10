@@ -12,10 +12,21 @@ class SpellStorage
     @path = "data/spells/"
     @files = Dir.glob("#{@path}*.yaml")
     @files.each do |file|
-      # spell = Spell.new()
       spell = load_spell_as_YAML(file.split("/").last().split(".").first())
       @spells << spell
     end
+  end
+
+  def puts_spell(spell_name)
+    thing = ""
+    @spells.each() do |spell|
+      if spell.spell_name.downcase == spell_name.downcase
+        return spell.to_string()
+      else
+        thing = ""
+      end
+    end
+    return thing
   end
 
   def is_a_spell(spell_name)

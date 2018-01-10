@@ -1,14 +1,17 @@
 --- !ruby/object:Character
-strength: 13
+strength: 16
 constitution: 13
-dexterity: 10
-intelligence: 11
-wisdom: 16
-charisma: 15
+dexterity: 14
+intelligence: 17
+wisdom: 9
+charisma: 14
 proficiency:
-- athletics
-- investigation
-- intimidation
+- intelligence
+- wisdom
+- light
+- arcana
+- history
+- insight
 expertise: []
 classes: !ruby/object:Classes
   classes:
@@ -65,8 +68,8 @@ items: !ruby/object:ItemsControl
     currency: !ruby/object:Currency
       value_of_gold: 100
       value_of_silver: 10
-    item_name: short sword
-    item_decription: A bloody sword
+    item_name: Salad
+    item_decription: A bloody salad
     cost: 123
     weight: '15'
     magical: 'false
@@ -119,7 +122,7 @@ items: !ruby/object:ItemsControl
     two_handed: false
     versatile: false
     ammunition: false
-  - &6 !ruby/object:Weapon
+  - !ruby/object:Weapon
     currency: !ruby/object:Currency
       value_of_gold: 100
       value_of_silver: 10
@@ -147,45 +150,16 @@ items: !ruby/object:ItemsControl
     currency: !ruby/object:Currency
       value_of_gold: 100
       value_of_silver: 10
-    item_name: short sword
-    item_decription: A bloody sword
+    item_name: Chain Mail
+    item_decription: A bloody bit of chain
     cost: 123
     weight: '15'
     magical: 'false'
     armour_type: 'false'
     armor_class: '10'
     strength_required: '10'
-spells_list: !ruby/object:Spells
-  cantrips:
-  - !ruby/object:Spell
-    spell_name: Chill Touch
-    spell_level: 0
-    school: Necromancy
-    casting_time: 1 action
-    range: 120 feet
-    components: V, S
-    duration: Instantaneous
-    spell_description: |-
-      You create a ghostly, skeletal hand in the space of a creature within range. Make a ranged spell Attack against the creature to assail it with the chill of the grave. On a hit, the target takes 1d8 necrotic damage, and it can't regain hit points until the start of your next turn. Until then, the hand clings to the target.
-      If you hit an Undead target, it also has disadvantage on Attack rolls against you until the end of your next turn.
-      This spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8).
-    at_higher_levels: " \r\n"
-  first_level_spells:
-  - !ruby/object:Spell
-    spell_name: Magic Missile
-    spell_level: 1
-    school: Evocation
-    casting_time: 1 action
-    range: 120 feet
-    components: V, S
-    duration: Instantaneous
-    spell_description: You create three glowing darts of magical force. Each dart
-      hits a creature of your choice that you can see within range. A dart deals 1d4+1
-      force damage to its target. The darts all strike simultaneously and you can
-      direct them to hit one creature or several.
-    at_higher_levels: "When you cast this spell using a spell slot of 2nd level or
-      higher, the spell creates one more dart for each slot above 1st.\r\n"
-  second_level_spells:
+spells_storage: !ruby/object:SpellStorage
+  spells:
   - !ruby/object:Spell
     spell_name: Acid Arrow
     spell_level: 2
@@ -204,7 +178,6 @@ spells_list: !ruby/object:Spells
       higher, the damage (both initial and later) increases by 1d4 for each slot level
       above 2nd.\r\n"
     materials: Powdered rhubarb leaf and an adder's stomach
-  thrid__level_spells:
   - !ruby/object:Spell
     spell_name: Animate Dead
     spell_level: 3
@@ -222,22 +195,54 @@ spells_list: !ruby/object:Spells
       for each slot above 3rd. Each of the creatures must come from a different corpse
       or pile of bones.\r\n"
     materials: A drop of blood, a piece of flesh, and a pinch of bone dust
-  fourth_level_spells:
   - !ruby/object:Spell
-    spell_name: Arcane Eye
-    spell_level: 4
-    school: Divination
+    spell_name: Astral Projection
+    spell_level: 9
+    school: Necromancy
+    casting_time: 1 hour
+    range: 10 feet
+    components: V, S, M
+    duration: Special
+    spell_description: |-
+      You and up to eight willing creatures within range project your astral bodies into the Astral Plane (the spell fails and the casting is wasted if you are already on that plane). The material body you leave behind is Unconscious and in a state of suspended animation, it doesn't need food or air and doesn't age.
+      Your astral body resembles your mortal form in almost every way, replicating your game Statistics and possessions. The principal difference is the addition of a silvery cord that extends from between your shoulder blades and trails behind you, fading to Invisibility after 1 foot. This cord is your tether to your material body. As long as the tether remains intact, you can find your way home. If the cord is cut-something that can happen only when an effect specifically states that it does-your soul and body are separated, killing you instantly.
+      Your astral form can freely travel through the Astral Plane and can pass through portals there leading to any other plane. If you enter a new plane or return to the plane you were on when casting this spell, your body and possessions are transported along the silver cord, allowing you to re-enter your body as you enter the new plane. Your astral form is a separate incarnation. Any damage or other effects that apply to it have no effect on your physical body, nor do they persist when you return to it.
+      The spell ends for you and your companions when you use your action to dismiss it. When the spell ends, the affected creature returns to its physical body, and it awakens.
+      The spell might also end early for you or one of your companions. A successful Dispel Magic spell used against an astral or physical body ends the spell for that creature. If a creature's original body or its astral form drops to 0 hit points, the spell ends for that creature. If the spell ends and the silver cord is intact, the cord pulls the creature's astral form back to its body, ending its state of suspended animation.
+      If you are returned to your body prematurely, your companions remain in their astral forms and must find their own way back to their bodies, usually by Dropping to 0 Hit Points.
+    at_higher_levels: " \r\n"
+  - !ruby/object:Spell
+    spell_name: Magic Missile
+    spell_level: 1
+    school: Evocation
     casting_time: 1 action
     range: 120 feet
-    components: V S M
-    duration: Up to 1 hour
+    components: V, S
+    duration: Instantaneous
     spell_description: |-
-      You create an Invisible, magical eye within range that hovers in the air for the Duration.
-      You mentally receive visual information from the eye, which has normal vision and Darkvision out to 30 feet. The eye can look in every direction.
-      As an action, you can move the eye up to 30 feet in any direction. There is no limit to how far away from you the eye can move, but it can't enter another plane of existence. A solid barrier blocks the eye's Movement, but the eye can pass through an opening as small as 1 inch in diameter.
-    at_higher_levels: " \r\n"
-    materials: A bit of bat fur
-  fifth_level_spells:
+      You create three glowing darts of magical force. Each dart hits
+        a creature of your choice that you can see within range. A dart deals 1d4+1 force
+        damage to its target. The darts all strike simultaneously and you can direct them
+        to hit one creature or several.
+    at_higher_levels: |-
+      When you cast this spell using a spell slot of 2nd level or higher,
+          the spell creates one more dart for each slot above 1st.
+  - !ruby/object:Spell
+    spell_name: Chain Lightning
+    spell_level: 6
+    school: Evocation
+    casting_time: 1 action
+    range: 150 feet
+    components: V S M
+    duration: Instantaneous
+    spell_description: |-
+      You create a bolt of lightning that arcs toward a target of your choice that you can see within range. Three bolts then leap from that target to as many as three other Targets, each of which must be within 30 feet of the first target. A target can be a creature or an object and can be targeted by only one of the bolts.
+      A target must make a Dexterity saving throw. The target takes 10d8 lightning damage on a failed save, or half as much on a successful one.
+    at_higher_levels: "When you cast this spell using a spell slot of 7th level or
+      higher, one additional bolt leaps from the first target to another target for
+      each slot level above 6th.\r\n"
+    materials: A bit of fur; a piece of amber, glass, or a crystal rod; and three
+      silver pins
   - !ruby/object:Spell
     spell_name: Animate Objects
     spell_level: 5
@@ -259,24 +264,19 @@ spells_list: !ruby/object:Spells
     at_higher_levels: "If you cast this spell using a spell slot of 6th level or higher,
       you can animate two additional Objects for each slot level above 5th.\r\n"
     materials: materials
-  sixth_level_spells:
   - !ruby/object:Spell
-    spell_name: Chain Lightning
-    spell_level: 6
-    school: Evocation
+    spell_name: Chill Touch
+    spell_level: 0
+    school: Necromancy
     casting_time: 1 action
-    range: 150 feet
-    components: V S M
+    range: 120 feet
+    components: V, S
     duration: Instantaneous
     spell_description: |-
-      You create a bolt of lightning that arcs toward a target of your choice that you can see within range. Three bolts then leap from that target to as many as three other Targets, each of which must be within 30 feet of the first target. A target can be a creature or an object and can be targeted by only one of the bolts.
-      A target must make a Dexterity saving throw. The target takes 10d8 lightning damage on a failed save, or half as much on a successful one.
-    at_higher_levels: "When you cast this spell using a spell slot of 7th level or
-      higher, one additional bolt leaps from the first target to another target for
-      each slot level above 6th.\r\n"
-    materials: A bit of fur; a piece of amber, glass, or a crystal rod; and three
-      silver pins
-  seventh_level_spells:
+      You create a ghostly, skeletal hand in the space of a creature within range. Make a ranged spell Attack against the creature to assail it with the chill of the grave. On a hit, the target takes 1d8 necrotic damage, and it can't regain hit points until the start of your next turn. Until then, the hand clings to the target.
+      If you hit an Undead target, it also has disadvantage on Attack rolls against you until the end of your next turn.
+      This spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8).
+    at_higher_levels: " \r\n"
   - !ruby/object:Spell
     spell_name: Arcane Sword
     spell_level: 7
@@ -291,7 +291,6 @@ spells_list: !ruby/object:Spells
     at_higher_levels: " \r\n"
     materials: A miniature platinum sword with a grip and pommel of copper and zinc,
       worth 250 gp
-  eighth_level_spells:
   - !ruby/object:Spell
     spell_name: Antimagic Field
     spell_level: 8
@@ -312,25 +311,60 @@ spells_list: !ruby/object:Spells
       Dispel Magic: Spells and magical effects such as Dispel Magic have no effect on the Sphere. Likewise, the spheres created by different antimagic field Spells don't nullify each other.
     at_higher_levels: " \r\n"
     materials: A pinch of powdered iron or iron filings
-  ninth_level_spells:
   - !ruby/object:Spell
-    spell_name: Astral Projection
-    spell_level: 9
-    school: Necromancy
-    casting_time: 1 hour
-    range: 10 feet
-    components: V, S, M
-    duration: Special
+    spell_name: Arcane Eye
+    spell_level: 4
+    school: Divination
+    casting_time: 1 action
+    range: 120 feet
+    components: V S M
+    duration: Up to 1 hour
     spell_description: |-
-      You and up to eight willing creatures within range project your astral bodies into the Astral Plane (the spell fails and the casting is wasted if you are already on that plane). The material body you leave behind is Unconscious and in a state of suspended animation, it doesn't need food or air and doesn't age.
-      Your astral body resembles your mortal form in almost every way, replicating your game Statistics and possessions. The principal difference is the addition of a silvery cord that extends from between your shoulder blades and trails behind you, fading to Invisibility after 1 foot. This cord is your tether to your material body. As long as the tether remains intact, you can find your way home. If the cord is cut-something that can happen only when an effect specifically states that it does-your soul and body are separated, killing you instantly.
-      Your astral form can freely travel through the Astral Plane and can pass through portals there leading to any other plane. If you enter a new plane or return to the plane you were on when casting this spell, your body and possessions are transported along the silver cord, allowing you to re-enter your body as you enter the new plane. Your astral form is a separate incarnation. Any damage or other effects that apply to it have no effect on your physical body, nor do they persist when you return to it.
-      The spell ends for you and your companions when you use your action to dismiss it. When the spell ends, the affected creature returns to its physical body, and it awakens.
-      The spell might also end early for you or one of your companions. A successful Dispel Magic spell used against an astral or physical body ends the spell for that creature. If a creature's original body or its astral form drops to 0 hit points, the spell ends for that creature. If the spell ends and the silver cord is intact, the cord pulls the creature's astral form back to its body, ending its state of suspended animation.
-      If you are returned to your body prematurely, your companions remain in their astral forms and must find their own way back to their bodies, usually by Dropping to 0 Hit Points.
+      You create an Invisible, magical eye within range that hovers in the air for the Duration.
+      You mentally receive visual information from the eye, which has normal vision and Darkvision out to 30 feet. The eye can look in every direction.
+      As an action, you can move the eye up to 30 feet in any direction. There is no limit to how far away from you the eye can move, but it can't enter another plane of existence. A solid barrier blocks the eye's Movement, but the eye can pass through an opening as small as 1 inch in diameter.
     at_higher_levels: " \r\n"
-spells: []
+    materials: A bit of bat fur
+  path: data/spells/
+  files:
+  - data/spells/Acid Arrow.yaml
+  - data/spells/Animate Dead.yaml
+  - data/spells/Astral Projection.yaml
+  - data/spells/Magic Missile.yaml
+  - data/spells/Chain Lightning.yaml
+  - data/spells/Animate Objects.yaml
+  - data/spells/Chill Touch.yaml
+  - data/spells/Arcane Sword.yaml
+  - data/spells/Antimagic Field.yaml
+  - data/spells/Arcane Eye.yaml
+spells:
+- Magic Missile
+- Acid Arrow
 character_name: Tia
-race: Teifling
-character_class: Fighter
-character_weapon: *6
+race: Dwarf
+character_class: Bard
+experience: 100
+alighnment: Evil
+character_weapon: !ruby/object:Weapon
+  currency: !ruby/object:Currency
+    value_of_gold: 100
+    value_of_silver: 10
+  item_name: Long Sword
+  item_decription: A long sword, it's long I guess
+  proficiency_required: martial melee
+  cost: 90
+  weight: '15'
+  magical: 'false'
+  damage_die: 1d10
+  finesse: false
+  heavy: false
+  light: false
+  loading: false
+  short_range: 0
+  long_range: 0
+  reach: false
+  special: false
+  thrown: false
+  two_handed: false
+  versatile: false
+  ammunition: false
