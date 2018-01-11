@@ -98,4 +98,46 @@ class CharacterUtility
   def list_spells()
     return @spells
   end
+
+  def return_level()
+    if @experience >= 300 and @experience < 900
+      return "Level 2"
+    elsif @experience >= 900 and @experience < 2700
+      return "Level 3"
+    elsif @experience >= 2700 and @experience < 6500
+      return "Level 4"
+    elsif @experience >= 6500 and @experience < 14000
+      return "Level 5"
+    elsif @experience >= 14000 and @experience < 23000
+      return "Level 6"
+    elsif @experience >= 23000 and @experience < 34000
+      return "Level 7"
+    elsif @experience >= 48000 and @experience < 64000
+      return "Level 9"
+    elsif @experience >= 64000 and @experience < 85000
+      return "Level 10"
+    elsif @experience >= 85000 and @experience < 100000
+      return "Level 11"
+    elsif @experience >= 100000 and @experience < 120000
+      return "Level 12"
+    elsif @experience >= 120000 and @experience < 140000
+      return "Level 13"
+    elsif @experience >= 140000 and @experience < 165000
+      return "Level 14"
+    elsif @experience >= 165000 and @experience < 195000
+      return "Level 15"
+    elsif @experience >= 195000 and @experience < 225000
+      return "Level 16"
+    elsif @experience >= 225000 and @experience < 265000
+      return "Level 17"
+    elsif @experience >= 265000 and @experience < 305000
+      return "Level 18"
+    elsif @experience >= 305000 and @experience < 355000
+      return "Level 19"
+    elsif @experience >= 355000
+      return "Level 20"
+    else
+      return "Level 1"
+    end
+  end
 end

@@ -12,7 +12,7 @@ class Currency
     elsif copper >= 10
       return convert_to_silver(copper)
     else
-      return copper
+      return "#{copper}cp"
     end
   end
 

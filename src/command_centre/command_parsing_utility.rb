@@ -23,7 +23,15 @@ class CommandParsingUtility
     return command.split("spell:").last
   end
 
+  def parse_item(command)
+    return command.split("item:").last
+  end
+
   def parse_weapon(command)
     return command.split("weapon:").last
+  end
+
+  def parse_armour(command)
+    return command.split("armour:").last
   end
 end

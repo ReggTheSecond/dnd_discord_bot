@@ -6,21 +6,16 @@ class Armour < Item
   attr_accessor :strength_required
   attr_accessor :stealth
 
-  def is_light_armour()
-    if @armour_type == "light"
+  def get_armour_type()
+    if @armour_type.downcase() == "light"
       return "Light"
-    end
-  end
-  def is_medium_armour()
-    if @armour_type == "medium"
+    elsif @armour_type.downcase() == "medium"
       return "Medium"
-    end
-  end
-  def is_heavy_armour()
-    if @armour_type == "heavy"
+    elsif @armour_type.downcase() == "heavy"
       return "Heavy"
     end
   end
+
   def disadvantage_on_stealth()
     if @stealth == true
       return "Disadvantage on Stealth"
@@ -29,7 +24,7 @@ class Armour < Item
 
   def to_string()
     from_item = super()
-    to_return = "#{from_item}\nArmour Class: #{armor_class},\nArmour Type: #{is_light_armour()}#{is_medium_armour()}#{is_heavy_armour()},\nStrength Required: #{strength_required},\n#{disadvantage_on_stealth}"
+    to_return = "#{from_item}\nArmour Class: #{armor_class},\nArmour Type: #{get_armour_type()},\nStrength Required: #{strength_required},\n#{disadvantage_on_stealth}"
     if to_return.end_with?(",")
       return to_return.chop()
     else

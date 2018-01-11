@@ -11,15 +11,15 @@ class CommandCentre < CommandParsingUtility
   attr_accessor :spells
 
   def initialize()
-    @characterStorage = CharacterStorage.new()
     @diceRoller = DiceRoller.new()
-    @spells = SpellStorage.new()
-    @items = ItemsControl.new()
+    @characterStorage = CharacterStorage.new()
+    @spells_storage = SpellStorage.new()
+    @items_storage = ItemsControl.new()
   end
 
   def process_command(command)
     case command.downcase()
-    when /^skill:.+;character:.+/
+    when /^character:.+;skill:.+/
       return @diceRoller.roll_skill(get_character(parse_character(command)), parse_skill(command))
     when /^character:.+;attack$/
       return @diceRoller.roll_attack(get_character(parse_character(command)))
@@ -30,9 +30,21 @@ class CommandCentre < CommandParsingUtility
     when /^character:.+;spell slots$/
       return get_character(parse_character(command)).spells_slots()
     when /^spell:+./
-      return @spells.puts_spell(parse_spell(command))
+      return @spells_storage.puts_spell(parse_spell(command))
+    when /^item:+./
+      return @items_storage.get_item(parse_item(command)).to_string
     when /^weapon:+./
-      return @items.get_weapon(parse_weapon(command)).to_string()
+      return @items_storage.get_weapon(parse_weapon(command)).to_string()
+    when /^armour:+./
+      return @items_storage.get_armour(parse_armour(command)).to_string()
+    when /^character:.+;experience$/
+      return get_char_exp(command)
+    when /^character:.+;exp$/
+      return get_char_exp(command)
+    when /^character:.+;level$/
+      return get_character(parse_character(command)).return_level()
+    else
+      return "Unknown Command"
     end
   end
 
@@ -51,13 +63,26 @@ class CommandCentre < CommandParsingUtility
     end
     return return_character
   end
+
+  def get_char_exp(command)
+    return "EXP: #{get_character(parse_character(command)).experience}"
+  end
 end
 
-centre = CommandCentre.new()
-
-puts centre.process_command("skill:history;character:Narset")
-puts centre.process_command("character:Narset;attack")
-puts centre.process_command("character:Narset;weapon damage")
-puts centre.process_command("character:Narset;spell list")
-puts centre.process_command("spell:Magic Missile")
-puts centre.process_command("weapon:short sword")
+# centre = CommandCentre.new()
+#
+# puts centre.process_command("character:Narset;skill:history")
+# puts centre.process_command("character:Narset;attack")
+# puts centre.process_command("character:Narset;weapon damage")
+# puts centre.process_command("character:Narset;spell list")
+# puts ""
+# puts centre.process_command("spell:Magic Missile")
+# puts ""
+# puts centre.process_command("item:Bag of Tricks")
+# puts ""
+# puts centre.process_command("weapon:short sword")
+# puts ""
+# puts centre.process_command("armour:chain mail")
+# puts ""
+# puts centre.process_command("character:Narset;exp")
+# puts centre.process_command("character:Narset;level")
