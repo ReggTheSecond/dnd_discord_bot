@@ -4,67 +4,103 @@
     value_of_gold: 100
     value_of_silver: 10
   item_name: Short Sword
-  item_decription: A bloody sword
-  proficiency_required: simple melee
-  cost: 123
-  weight: '15'
-  magical: 'false'
+  item_type: Melee Weapon
+  item_decription: A very short sword.
+  cost: 150
+  weight: 3
+  magical: false
   damage_die: 1d6
-  finesse: true
+  damage_type: Piercing
+  finesse: false
+  heavy: false
+  light: false
+  loading: false
+  short_range: false
+  long_range: false
+  reach: false
+  special: false
+  ranged: false
+  ammunition: false
+  thrown: false
+  two_handed: false
+  versatile: true
+  proficiency_required: false
+- !ruby/object:Weapon
+  currency: !ruby/object:Currency
+    value_of_gold: 100
+    value_of_silver: 10
+  item_name: LongSword
+  item_type: Melee Weapon
+  item_decription: A very long sword.
+  cost: 150
+  weight: 3
+  magical: false
+  damage_die: 1d8
+  damage_type: Slashing
+  finesse: false
+  heavy: false
+  light: false
+  loading: false
+  short_range: false
+  long_range: false
+  reach: false
+  special: false
+  ranged: false
+  ammunition: false
+  thrown: false
+  two_handed: false
+  versatile: true
+  proficiency_required: false
+- !ruby/object:Weapon
+  currency: !ruby/object:Currency
+    value_of_gold: 100
+    value_of_silver: 10
+  item_name: Hand Crossbow
+  item_type: Ranged Weapon
+  item_decription: It is a bow, but like with a cross and like ya use it in a hand.
+  cost: 155
+  weight: 3
+  magical: false
+  damage_die: 1d6
+  damage_type: Piercing
+  finesse: false
   heavy: false
   light: true
-  loading: false
-  short_range: 0
-  long_range: 0
+  loading: true
+  short_range: 30
+  long_range: 120
   reach: false
   special: false
+  ranged: true
+  ammunition: Crossbow bolt
   thrown: false
   two_handed: false
   versatile: false
-  ammunition: false
+  proficiency_required: false
 - !ruby/object:Weapon
   currency: !ruby/object:Currency
     value_of_gold: 100
     value_of_silver: 10
-  item_name: Battle Axe
-  item_decription: A bloody big Axe
-  proficiency_required: martial melee
-  cost: 153
-  weight: '15'
-  magical: 'false'
-  damage_die: 1d10
-  finesse: false
-  heavy: true
-  light: false
-  loading: false
-  short_range: 0
-  long_range: 0
-  reach: false
-  special: false
-  thrown: false
-  two_handed: false
-  versatile: false
-  ammunition: false
-- !ruby/object:Weapon
-  currency: !ruby/object:Currency
-    value_of_gold: 100
-    value_of_silver: 10
-  item_name: Long Sword
-  item_decription: A long sword, it's long I guess
-  proficiency_required: martial melee
-  cost: 90
-  weight: '15'
-  magical: 'false'
-  damage_die: 1d10
+  item_name: Spear
+  item_type: Melee Weapon
+  item_decription: It is like a stick, with a pointy bit, and you can stab people
+    with it or you can like, you know, throw it.
+  cost: 155
+  weight: 3
+  magical: false
+  damage_die: 1d6
+  damage_type: Piercing
   finesse: false
   heavy: false
   light: false
   loading: false
-  short_range: 0
-  long_range: 0
+  short_range: 30
+  long_range: 60
   reach: false
   special: false
-  thrown: false
+  ranged: true
+  ammunition: false
+  thrown: true
   two_handed: false
   versatile: false
-  ammunition: false
+  proficiency_required: false

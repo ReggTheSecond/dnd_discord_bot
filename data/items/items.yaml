@@ -3,10 +3,56 @@
   currency: !ruby/object:Currency
     value_of_gold: 100
     value_of_silver: 10
-  item_name: Salad
-  item_decription: A bloody salad
-  cost: 123
-  weight: '15'
-  magical: 'false
-
-'
+  item_name: Alchemist's Fire
+  item_type: Adventuring Gear
+  item_decription: |-
+    This sticky, adhesive fluid ignites when exposed to air. As an
+     action, you can throw this flask up to 20 feet, shattering it on impact. Make
+     a ranged Attack against a creature or object, treating the alchemist's fire as
+     an improvised weapon. On a hit, the target takes 1d4 fire damage at the start
+     of each of its turns. A creature can end this damage by using its action to make
+     a DC 10 Dexterity check to extinguish the flames.
+  cost: 100
+  weight: 1
+  magical: false
+- !ruby/object:Item
+  currency: !ruby/object:Currency
+    value_of_gold: 100
+    value_of_silver: 10
+  item_name: Crossbow bolts
+  item_type: Ammunition
+  item_decription: |-
+    Ammunition: You can use a weapon that has the ammunition property
+     to make a ranged Attack only if you have ammunition to fire from the weapon. Each
+     time you Attack with the weapon, you expend one piece of ammunition. Drawing the
+     ammunition from a Quiver, case, or other container is part of the Attack. At the
+     end of the battle, you can recover half your expended ammunition by taking a minute
+     to Search the battlefield.
+  cost: 5
+  weight: 0.075
+  magical: false
+- !ruby/object:Item
+  currency: !ruby/object:Currency
+    value_of_gold: 100
+    value_of_silver: 10
+  item_name: Bag of Tricks
+  item_type: Wonderous
+  item_decription: "This ordinary bag, made from gray, rust, or tan cloth, appears\nempty.
+    Reaching inside the bag, however, reveals the presence of a small, fuzzy\nobject.
+    The bag weighs 1/2 pound.\nYou can use an action to pull the fuzzy objectfrom
+    the bag and throw it up to 20\nfeet. When the object lands, it transformsinto
+    a creature you determine by rolling\na d8 and consulting\nthe table that corresponds\nto
+    the bag's color. The creature vanishes at the next dawn or when it is reduced\nto
+    0 hit points.\nThe creature is friendly to you and your companions, and itacts
+    on Your Turn. You\ncan use a Bonus Action to Command how the creature moves\nand
+    what action it takes on its next turn, or to give it general orders, such\nas
+    to Attack your enemies. In the absence of such orders, the creature acts in\na
+    fashion appropriate to its nature.\nOnce three fuzzy Objects have been pulled
+    from the bag, the bag can't be used again\nuntil the next dawn.\n\nGray Bag ofTricks\nd8\tCreature\n1\tWeasel\n2\tGiant
+    Rat\n3\tBadger\n4\tBoar\n5\tPanther\n6\tGiantBadger\n7\tDire Wolf\n8\tGiant Elk\n\nRust
+    Bag of Tricks\nd8\tCreature\n1\tRat\n2\tOwl\n3\tMastiff\n4\tGoat\n5\tGiantGoat\n6\tGiant
+    Boar\n7\tLion\n8\tBrown Bear\n\nTan Bag of Tricks\nd8\tCreature\n1\tJackal\n2\tApe\n3\tBaboon\n4\tAxeBeak\n5\tBlack
+    Bear\n6\tGiant Weasel\n7\tGiant Hyena\n8\tTiger"
+  cost: 5
+  weight: 1
+  magical: true
