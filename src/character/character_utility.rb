@@ -140,4 +140,11 @@ class CharacterUtility
       return "Level 1"
     end
   end
+
+  def generate_character_sheet()
+    return "########################################################################
+# Name: #{@character_name}, Race: #{@race}, Class: #{@character_class} #
+# Strength Dexterity Constitution Intelligence Wisdom Charisma #
+# #{@strength} #{@dexterity} #{@constitution} #{@intelligence} #{@wisdom} #{@charisma}"
+  end
 end

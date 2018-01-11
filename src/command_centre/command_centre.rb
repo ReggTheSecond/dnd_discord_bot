@@ -43,6 +43,8 @@ class CommandCentre < CommandParsingUtility
       return get_char_exp(command)
     when /^character:.+;level$/
       return get_character(parse_character(command)).return_level()
+    when /^character:.+/
+      return get_character(parse_character(command)).generate_character_sheet()
     else
       return "Unknown Command"
     end
