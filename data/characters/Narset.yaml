@@ -55,7 +55,7 @@ skills: !ruby/object:Skills
   - deception
   - intimidation
   - performance
-  - " persuasion"
+  - persuasion
   skills:
   - *1
   - *2
@@ -343,6 +343,7 @@ spells:
 character_name: Narset
 race: Elf
 character_class: Wizard
+class_archetype: School of Divination
 experience: 800
 alighnment: Good
 character_weapon: !ruby/object:Weapon

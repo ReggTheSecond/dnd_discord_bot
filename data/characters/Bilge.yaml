@@ -56,7 +56,7 @@ skills: !ruby/object:Skills
   - deception
   - intimidation
   - performance
-  - " persuasion"
+  - persuasion
   skills:
   - *1
   - *2

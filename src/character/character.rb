@@ -86,6 +86,9 @@ class Character < CharacterUtility
 
   def attribute_bonus(skill)
     attribute = @skills.attribute_for_skill(skill.downcase)
+    if attribute == nil
+      puts skill
+    end
     case attribute.downcase()
     when "strength"
       attribute_score = @strength
@@ -100,7 +103,6 @@ class Character < CharacterUtility
     when "charisma"
       attribute_score = @charisma
     end
-
     return get_attribute_score(attribute_score)
   end
 

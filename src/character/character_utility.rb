@@ -141,10 +141,39 @@ class CharacterUtility
     end
   end
 
+  def add_proficiency_bonus(skill, attribute_bonus)
+    if is_proficient(skill)
+      if is_expert(skill)
+        return attribute_bonus + proficiency_bonus() + proficiency_bonus()
+      else
+        return attribute_bonus + proficiency_bonus()
+      end
+    else
+      return attribute_bonus
+    end
+  end
+
   def generate_character_sheet()
-    return "########################################################################
-# Name: #{@character_name}, Race: #{@race}, Class: #{@character_class} #
-# Strength Dexterity Constitution Intelligence Wisdom Charisma #
-# #{@strength} #{@dexterity} #{@constitution} #{@intelligence} #{@wisdom} #{@charisma}"
+    return "Name: #{@character_name}
+---------------------------------------------------------------------------------
+Class: #{@character_class}      Class Archetype: #{@class_archetype}      Background:
+Race: #{@race}      Alighnment: #{@alighnment}      Experience Points: #{@experience} (#{return_level()})
+---------------------------------------------------------------------------------
+Strength: #{@strength} (#{get_attribute_score(@strength)})    Dexterity: #{@dexterity} (#{get_attribute_score(@dexterity)})   Constitution: #{@constitution} (#{get_attribute_score(@constitution)})
+Intelligence: #{@intelligence} (#{get_attribute_score(@intelligence)})    Wisdom: #{@wisdom} (#{get_attribute_score(@wisdom)})    Charisma: #{@charisma} (#{get_attribute_score(@charisma)})
+---------------------------------------------------------------------------------
+Saving Throws:
+
+---------------------------------------------------------------------------------
+Strength:
+Athletics #{add_proficiency_bonus("athletics", attribute_bonus("athletics"))}
+Dexterity:
+Acrobatics #{add_proficiency_bonus("athletics", attribute_bonus("acrobatics"))}         Slight of Hand #{add_proficiency_bonus("slight of hand", attribute_bonus("slight of hand"))}         Stealth #{add_proficiency_bonus("stealth", attribute_bonus("stealth"))}
+Intelligence:
+Arcana #{add_proficiency_bonus("arcana", attribute_bonus("arcana"))}         History #{add_proficiency_bonus("history", attribute_bonus("history"))}         Investigation #{add_proficiency_bonus("investigation", attribute_bonus("investigation"))}         Nature #{add_proficiency_bonus("athletics", attribute_bonus("nature"))}         Religion #{add_proficiency_bonus("religion", attribute_bonus("religion"))}
+Wisdom:
+Animal Handeling #{add_proficiency_bonus("animal handeling", attribute_bonus("animal handeling"))}         Insight #{add_proficiency_bonus("insight", attribute_bonus("insight"))}         Medicine #{add_proficiency_bonus("medicine", attribute_bonus("medicine"))}         Perception #{add_proficiency_bonus("perception", attribute_bonus("perception"))}         Survival #{add_proficiency_bonus("survival", attribute_bonus("survival"))}
+Charisma:
+Deception #{add_proficiency_bonus("deception", attribute_bonus("deception"))}         Intimidation #{add_proficiency_bonus("intimidation", attribute_bonus("intimidation"))}         Performance #{add_proficiency_bonus("performance", attribute_bonus("performance"))}         Persuasion #{add_proficiency_bonus("persuasion", attribute_bonus("persuasion"))}"
   end
 end

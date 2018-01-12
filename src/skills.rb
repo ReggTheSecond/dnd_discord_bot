@@ -18,7 +18,7 @@ class Skills
     @dexterity_based_skills << "acrobatics" << "slight of hand" << "stealth"
     @intelligence_based_skills  << "arcana" << "history" << "investigation" << "nature" << "religion"
     @wisdom_based_skills << "animal handeling" << "insight" << "medicine" << "perception" << "survival"
-    @charisma_based_skills   << "deception" << "intimidation" << "performance" << " persuasion"
+    @charisma_based_skills   << "deception" << "intimidation" << "performance" << "persuasion"
     @skills << @strength_based_skills << @dexterity_based_skills << @intelligence_based_skills << @wisdom_based_skills << @charisma_based_skills
   end
 
@@ -42,6 +42,8 @@ class Skills
       return "wisdom"
     elsif @charisma_based_skills.include?(skill)
       return "charisma"
+    else
+      puts @charisma_based_skills.to_s
     end
   end
 end
