@@ -174,6 +174,9 @@ Arcana #{add_proficiency_bonus("arcana", attribute_bonus("arcana"))}         His
 Wisdom:
 Animal Handeling #{add_proficiency_bonus("animal handeling", attribute_bonus("animal handeling"))}         Insight #{add_proficiency_bonus("insight", attribute_bonus("insight"))}         Medicine #{add_proficiency_bonus("medicine", attribute_bonus("medicine"))}         Perception #{add_proficiency_bonus("perception", attribute_bonus("perception"))}         Survival #{add_proficiency_bonus("survival", attribute_bonus("survival"))}
 Charisma:
-Deception #{add_proficiency_bonus("deception", attribute_bonus("deception"))}         Intimidation #{add_proficiency_bonus("intimidation", attribute_bonus("intimidation"))}         Performance #{add_proficiency_bonus("performance", attribute_bonus("performance"))}         Persuasion #{add_proficiency_bonus("persuasion", attribute_bonus("persuasion"))}"
+Deception #{add_proficiency_bonus("deception", attribute_bonus("deception"))}         Intimidation #{add_proficiency_bonus("intimidation", attribute_bonus("intimidation"))}         Performance #{add_proficiency_bonus("performance", attribute_bonus("performance"))}         Persuasion #{add_proficiency_bonus("persuasion", attribute_bonus("persuasion"))}
+---------------------------------------------------------------------------------
+Weapon: #{@character_weapon.item_name()}
+"
   end
 end
