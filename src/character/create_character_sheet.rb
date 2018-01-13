@@ -1,6 +1,38 @@
+require 'discordrb'
+
 class CreateCharacterSheet
-  def name_character()
-    
+  attr_accessor :character_bot
+
+  def initialize()
+    token = ""
+    client_id = ""
+    @character_bot = Discordrb::Bot.new token: token, client_id: client_id
+
+    @character_bot.run()
+  end
+
+  def method_name
+    @character_bot.stop()
+  end
+
+  def generate(event)
+
+  end
+
+  def wait_for_responce()
+    responce = ""
+    while responce == ""
+      @character_bot.message(with_text: /.+/) do |event|
+        responce = event.content.to_s()
+      end
+    end
+    puts responce
+    return responce
+  end
+
+  def name_character(event)
+    event.respond "Character Name:"
+    wait_for_responce()
   end
 
   def choose_races()
@@ -51,3 +83,5 @@ class CreateCharacterSheet
 
   end
 end
+
+thing = CreateCharacterSheet.new()
