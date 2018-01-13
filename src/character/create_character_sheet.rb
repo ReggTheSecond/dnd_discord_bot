@@ -8,7 +8,8 @@ class CreateCharacterSheet
     client_id = ""
     @character_bot = Discordrb::Bot.new token: token, client_id: client_id
 
-    @character_bot.run()
+    @character_bot.run
+    wait_for_responce()
   end
 
   def method_name
@@ -27,7 +28,7 @@ class CreateCharacterSheet
       end
     end
     puts responce
-    return responce
+    @character_bot.stop
   end
 
   def name_character(event)
@@ -84,4 +85,10 @@ class CreateCharacterSheet
   end
 end
 
-thing = CreateCharacterSheet.new()
+# thing = CreateCharacterSheet.new()
+
+token = ""
+client_id = ""
+@character_bot = Discordrb::Bot.new token: token, client_id: client_id
+
+@character_bot.run
