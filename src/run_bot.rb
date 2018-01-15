@@ -1,8 +1,8 @@
 require 'discordrb'
 require_relative 'command_centre/command_centre.rb'
 
-token = #ARGV[0]
-client_id = #ARGV[1]
+token = ARGV[0]
+client_id = ARGV[1]
 
 bot = Discordrb::Bot.new token: token, client_id: client_id
 
