@@ -3,7 +3,6 @@ require_relative '../dice_roller/dice_roller.rb'
 require_relative 'command_parsing_utility.rb'
 require_relative '../storage/spells_storage.rb'
 require_relative '../storage/items_storage.rb'
-require_relative '../character/create_character_sheet.rb'
 
 class CommandCentre < CommandParsingUtility
   attr_accessor :characterStorage
@@ -16,10 +15,9 @@ class CommandCentre < CommandParsingUtility
     @characterStorage = CharacterStorage.new()
     @spells_storage = SpellStorage.new()
     @items_storage = ItemsControl.new()
-    @character_generator = CreateCharacterSheet.new()
   end
 
-  def process_command(command, event)
+  def process_command(command)
     case command.downcase()
     when /^character:.+;skill:.+/
       return @diceRoller.roll_skill(get_character(parse_character(command)), parse_skill(command))
@@ -48,7 +46,6 @@ class CommandCentre < CommandParsingUtility
     when /^character:.+/
       return get_character(parse_character(command)).generate_character_sheet()
     when /^new character$/
-      system 'ruby ../character/create_character_sheet.rb'
     else
       return "Unknown Command"
     end

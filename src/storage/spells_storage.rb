@@ -32,7 +32,7 @@ class SpellStorage
   def is_a_spell(spell_name)
     spell_or_not = false
     @spells.each do |spell|
-      spell_or_not =  spell_name == spell.spell_name
+      spell_or_not = spell_name == spell.spell_name
     end
   end
 
