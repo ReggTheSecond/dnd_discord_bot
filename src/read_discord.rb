@@ -3,7 +3,7 @@ require_relative 'command_centre/command_centre.rb'
 require_relative 'character/create_character_sheet.rb'
 
 token = ARGV[0]
-client_id = ARGV[2]
+client_id = ARGV[1]
 
 dnd_bot = Discordrb::Bot.new token: token, client_id: client_id
 
