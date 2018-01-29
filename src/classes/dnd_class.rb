@@ -50,14 +50,27 @@ class DnDClass
     end
   end
 
+  def selectable_skills()
+    skills = ""
+    @proficiencies.each do |skill|
+      skills << "#{skill},"
+    end
+
+    return skills
+  end
+
   def save_class_as_YAML(thing)
     File.open("data/classes/Druid.yaml", 'w') do |file|
         file.puts YAML::dump(thing)
     end
   end
 
+  def load_class_as_YAML(class_to_load)
+    return YAML.load_file("data/classes/#{class_to_load}.yaml")
+  end
+
   def to_string()
-    return "#{class_name}\n#{class_archetypes}\n\n#{level_two_ability_name}\n#{level_two_ability_description}"
+    return "#{class_name}"
   end
 end
 
@@ -77,4 +90,5 @@ thing.add_proficiency("Religion")
 thing.add_proficiency("Survival")
 thing.add_proficiency("light")
 thing.add_proficiency("medium")
+# puts thing.selectable_skills()
 thing = thing.save_class_as_YAML(thing)

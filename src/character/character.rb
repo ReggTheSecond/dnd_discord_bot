@@ -1,9 +1,11 @@
 require_relative '../skills.rb'
 require_relative '../classes.rb'
+require_relative '../classes/dnd_class.rb'
 require_relative '../dice_roller/dice_roller.rb'
 require_relative '../proficiencies.rb'
 require_relative '../storage/items_storage.rb'
 require_relative '../storage/spells_storage.rb'
+require_relative '../storage/class_storage.rb'
 require_relative 'character_utility.rb'
 require "yaml"
 
@@ -44,8 +46,8 @@ class Character < CharacterUtility
   def initialize()
     roll_stats()
     @proficiency = Array.new()
+    @class_storage = ClassStorage.new()
     @expertise = Array.new()
-    @classes = Classes.new()
     @skills = Skills.new()
     @items = ItemsControl.new()
     @spells_storage = SpellStorage.new()
@@ -135,9 +137,7 @@ class Character < CharacterUtility
   end
 
   def set_class(character_class)
-    if classes.is_a_class(character_class.downcase)
-      @character_class = character_class
-    end
+    @class = @class_storage.return_class(character_class)
   end
 
   def is_proficient(skill)

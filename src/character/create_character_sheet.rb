@@ -34,11 +34,12 @@ class CreateCharacterSheet
     event.respond "Choose class from amoung - Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, Warlock, Wizard."
     event.bot.message(with_text: /^.+/) do |respond_event|
       @new_character.set_class(respond_event.content.to_s())
+      event.respond @new_character.class.class_name
     end
   end
 
   def choose_skills(event)
-
+    event.respond "Choose #{}"
   end
 
   def choose_cantrips(event)

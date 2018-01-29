@@ -18,6 +18,14 @@ class ClassStorage
     end
   end
 
+  def return_class(desired_class)
+    @classes.each do |c_class|
+      if c_class.class_name.downcase == desired_class.downcase
+        return c_class
+      end
+    end
+  end
+
   def save_dnd_class_as_YAML(dnd_class)
     File.open("data/classes/#{dnd_class.dnd_class_name}.yaml", 'w') do |file|
         file.puts YAML::dump(dnd_class)
@@ -31,5 +39,4 @@ end
 
 thing = ClassStorage.new()
 
-puts thing.classes[0].to_string
-puts thing.classes[1].to_string
+puts thing.return_class("Druid").selectable_skills
