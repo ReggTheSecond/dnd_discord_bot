@@ -14,6 +14,7 @@ class CreateCharacterSheet
     sleep 15
     choose_class(event)
     sleep 15
+    choose_skills(event)
   end
 
   def name_character(event)
@@ -39,7 +40,17 @@ class CreateCharacterSheet
   end
 
   def choose_skills(event)
-    event.respond "Choose #{}"
+    event.respond "Choose #{@new_character.class.number_of_skills_to_choose} from amoung (seperate with a comma):\n
+    #{@new_character.class.selectable_skills()}"
+    event.bot.message(with_text: /^.+/) do |respond_event|
+      choosen = respond_event.content.to_s().split(",")
+      if choosen.size == @new_character.class.number_of_skills_to_choose
+        @new_character.add_proficiency(respond_event.content.to_s().split(",").first)
+        @new_character.add_proficiency(respond_event.content.to_s().split(",").last)
+      else
+        choose_skills(event)
+      end
+    end
   end
 
   def choose_cantrips(event)

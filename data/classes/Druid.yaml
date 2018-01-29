@@ -14,6 +14,9 @@ proficiencies:
 - survival
 - light
 - medium
+abilities:
+  level 1: FIRE, FIRE EVERY WHERE
+  level 2: ICE, ICE EVERY WHERE
 spells_storage: !ruby/object:SpellStorage
   spells:
   - !ruby/object:Spell
@@ -226,3 +229,4 @@ skills: !ruby/object:Skills
 class_name: Druid
 hit_points_at_first_level: 8 + Con
 hit_points_at_higher_levels: 1d8 + Con
+number_of_skills_to_choose: 2

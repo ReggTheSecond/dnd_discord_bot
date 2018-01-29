@@ -14,9 +14,11 @@ class DnDClass
   attr_accessor :available_spells
   attr_accessor :proficiencies
   attr_accessor :starting_equipment
+  attr_accessor :abilities
 
   attr_accessor :spells_storage
   attr_accessor :skills
+  attr_accessor :number_of_skills_to_choose
 
 
   def initialize()
@@ -24,6 +26,8 @@ class DnDClass
     @saving_throws = Array.new()
     @available_spells = Array.new()
     @proficiencies = Array.new()
+
+    @abilities = Hash.new()
 
     @spells_storage = SpellStorage.new()
     @skills = Skills.new()
@@ -59,6 +63,24 @@ class DnDClass
     return skills
   end
 
+  def abilities_at_level(level)
+    abilities = ""
+    if level.class == Fixnum
+      abilities = @abilities["level #{level}"]
+    else
+      abilities = @abilities[level.downcase]
+    end
+    return abilities
+  end
+
+  def all_class_abilities()
+    abilities = ""
+    @abilities.each_value() do |value|
+      abilities << "#{value}\n"
+    end
+    return abilities
+  end
+
   def save_class_as_YAML(thing)
     File.open("data/classes/Druid.yaml", 'w') do |file|
         file.puts YAML::dump(thing)
@@ -73,22 +95,3 @@ class DnDClass
     return "#{class_name}"
   end
 end
-
-thing = DnDClass.new()
-thing.class_name = "Druid"
-thing.hit_points_at_first_level = "8 + Con"
-thing.hit_points_at_higher_levels = "1d8 + Con"
-thing.add_spell("Animate Dead")
-thing.add_spell("Arcane Eye")
-thing.add_proficiency("Arcana")
-thing.add_proficiency("Animal Handling")
-thing.add_proficiency("Insight")
-thing.add_proficiency("Medicine")
-thing.add_proficiency("Nature")
-thing.add_proficiency("Perception")
-thing.add_proficiency("Religion")
-thing.add_proficiency("Survival")
-thing.add_proficiency("light")
-thing.add_proficiency("medium")
-# puts thing.selectable_skills()
-thing = thing.save_class_as_YAML(thing)

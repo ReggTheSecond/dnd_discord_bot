@@ -140,6 +140,14 @@ class Character < CharacterUtility
     @class = @class_storage.return_class(character_class)
   end
 
+  def class_abilities()
+    @class.all_class_abilities()
+  end
+
+  def class_archetype_abilities()
+    @class.class_archetype.all_archetype_abilities()
+  end
+
   def is_proficient(skill)
     if skill.class.to_s == "Weapon"
       return @proficiency.include?(skill.item_name.downcase)
