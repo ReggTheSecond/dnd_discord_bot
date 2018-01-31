@@ -63,7 +63,7 @@ class ClassStorage
   end
 end
 
-store_thing = ClassStorage.new()
+# store_thing = ClassStorage.new()
 
 # thing = DnDClass.new()
 # thing.class_name = "Druid"
@@ -93,9 +93,9 @@ store_thing = ClassStorage.new()
 # store_thing.classes << thing
 # store_thing.save_dnd_class_as_YAML(thing)
 
-thing = ClassArchetype.new()
-
-thing.archetype_name = "Circle of Dudes"
-thing.archetype_abilities["level 1"] = "Circle of Jerks"
-
-puts thing.all_archetype_abilities()
+# thing = ClassArchetype.new()
+#
+# thing.archetype_name = "Circle of Dudes"
+# thing.archetype_abilities["level 1"] = "Circle of Jerks"
+#
+# puts thing.all_archetype_abilities()

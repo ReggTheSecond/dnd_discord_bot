@@ -57,9 +57,8 @@ class DnDClass
   def selectable_skills()
     skills = ""
     @proficiencies.each do |skill|
-      skills << "#{skill},"
+      skills << "#{skill}, "
     end
-
     return skills
   end
 

@@ -52,6 +52,7 @@ class Character < CharacterUtility
     @items = ItemsControl.new()
     @spells_storage = SpellStorage.new()
     @spells = Array.new()
+    @character_class = Class.new()
   end
 
   def roll_stats()
@@ -136,16 +137,21 @@ class Character < CharacterUtility
     end
   end
 
+  def get_class_name()
+    return @character_class.class_name
+  end
+
   def set_class(character_class)
-    @class = @class_storage.return_class(character_class)
+    puts @class_storage.return_class(character_class)
+    @character_class = @class_storage.return_class(character_class)
   end
 
   def class_abilities()
-    @class.all_class_abilities()
+    @character_class.all_class_abilities()
   end
 
   def class_archetype_abilities()
-    @class.class_archetype.all_archetype_abilities()
+    @character_class.class_archetype.all_archetype_abilities()
   end
 
   def is_proficient(skill)
@@ -161,16 +167,15 @@ class Character < CharacterUtility
   end
 
   def to_string()
-    return "Name: #{@character_name}
-      Race: #{@race}
-      Class: #{@character_class}
-      Strength: #{@strength}
-      Constitution: #{@constitution}
-      Dexterity: #{@dexterity}
-      Intelligence: #{@intelligence}
-      Wisdom: #{@wisdom}
-      Charisma: #{@charisma}
-      Weapon: #{character_weapon.item_name}
-      spells: #{list_spells()}"
+    return "Name: #{@character_name}\n
+      Race: #{@race}\n
+      Class: #{@character_class.class}\n
+      Strength: #{@strength}\n
+      Constitution: #{@constitution}\n
+      Dexterity: #{@dexterity}\n
+      Intelligence: #{@intelligence}\n
+      Wisdom: #{@wisdom}\n
+      Charisma: #{@charisma}\n
+      Proficiencies: #{@proficiency}\n"
   end
 end

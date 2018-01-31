@@ -8,12 +8,13 @@ class CreateCharacterSheet
 
   def generate(event)
     @new_character = Character.new()
+    roll_attributes?(event)
     name_character(event)
-    sleep 15
+    sleep 5
     choose_races(event)
-    sleep 15
+    sleep 5
     choose_class(event)
-    sleep 15
+    sleep 5
     choose_skills(event)
   end
 
@@ -35,21 +36,21 @@ class CreateCharacterSheet
     event.respond "Choose class from amoung - Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, Warlock, Wizard."
     event.bot.message(with_text: /^.+/) do |respond_event|
       @new_character.set_class(respond_event.content.to_s())
-      event.respond @new_character.class.class_name
     end
   end
 
   def choose_skills(event)
-    event.respond "Choose #{@new_character.class.number_of_skills_to_choose} from amoung (seperate with a comma):\n
-    #{@new_character.class.selectable_skills()}"
+    event.respond "Choose #{@new_character.character_class.number_of_skills_to_choose} from amoung (seperate with a comma):\n
+    #{@new_character.character_class.selectable_skills()}"
     event.bot.message(with_text: /^.+/) do |respond_event|
-      choosen = respond_event.content.to_s().split(",")
-      if choosen.size == @new_character.class.number_of_skills_to_choose
+      # choosen = respond_event.content.to_s().split(",")
+      # if choosen.size == @new_character.character_class.number_of_skills_to_choose
         @new_character.add_proficiency(respond_event.content.to_s().split(",").first)
         @new_character.add_proficiency(respond_event.content.to_s().split(",").last)
-      else
-        choose_skills(event)
-      end
+        respond_event.respond @new_character.to_string()
+      # else
+      #   choose_skills(event)
+      # end
     end
   end
 
@@ -78,7 +79,7 @@ class CreateCharacterSheet
   end
 
   def roll_attributes?(event)
-
+    @new_character.roll_stats
   end
 
   def custom_attribute(event)
