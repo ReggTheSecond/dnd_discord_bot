@@ -1,163 +1,20 @@
---- !ruby/object:Character
-strength: 16
-constitution: 13
-dexterity: 14
-intelligence: 17
-wisdom: 9
-charisma: 14
-proficiency:
-- intelligence
-- wisdom
-- light
+--- !ruby/object:DnDClass
+class_archetypes: []
+saving_throws: []
+available_spells: []
+proficiencies:
 - arcana
-- history
-- insight
-expertise: []
-classes: !ruby/object:Classes
-  classes:
-  - barbarian
-  - bard
-  - cleric
-  - druid
-  - fighter
-  - monk
-  - paladin
-  - ranger
-  - rouge
-  - sorcerer
-  - warlock
-  - wizard
-  primal_paths:
-  - path of the berserker
-  - path of the totem warrior
-  bardic_schools:
-  - school of lore
-skills: !ruby/object:Skills
-  strength_based_skills: &1
-  - athletics
-  dexterity_based_skills: &2
-  - acrobatics
-  - slight of hand
-  - stealth
-  intelligence_based_skills: &3
-  - arcana
-  - history
-  - investigation
-  - nature
-  - religion
-  wisdom_based_skills: &4
-  - animal handeling
-  - insight
-  - medicine
-  - perception
-  - survival
-  charisma_based_skills: &5
-  - deception
-  - intimidation
-  - performance
-  - persuasion
-  skills:
-  - *1
-  - *2
-  - *3
-  - *4
-  - *5
-items: !ruby/object:ItemStorage
-  items:
-  - !ruby/object:Item
-    currency: !ruby/object:Currency
-      value_of_gold: 100
-      value_of_silver: 10
-    item_name: Salad
-    item_decription: A bloody salad
-    cost: 123
-    weight: '15'
-    magical: 'false
-
-'
-  weapons:
-  - !ruby/object:Weapon
-    currency: !ruby/object:Currency
-      value_of_gold: 100
-      value_of_silver: 10
-    item_name: Short Sword
-    item_decription: A bloody sword
-    proficiency_required: simple melee
-    cost: 123
-    weight: '15'
-    magical: 'false'
-    damage_die: 1d6
-    finesse: true
-    heavy: false
-    light: true
-    loading: false
-    short_range: 0
-    long_range: 0
-    reach: false
-    special: false
-    thrown: false
-    two_handed: false
-    versatile: false
-    ammunition: false
-  - !ruby/object:Weapon
-    currency: !ruby/object:Currency
-      value_of_gold: 100
-      value_of_silver: 10
-    item_name: Battle Axe
-    item_decription: A bloody big Axe
-    proficiency_required: martial melee
-    cost: 153
-    weight: '15'
-    magical: 'false'
-    damage_die: 1d10
-    finesse: false
-    heavy: true
-    light: false
-    loading: false
-    short_range: 0
-    long_range: 0
-    reach: false
-    special: false
-    thrown: false
-    two_handed: false
-    versatile: false
-    ammunition: false
-  - !ruby/object:Weapon
-    currency: !ruby/object:Currency
-      value_of_gold: 100
-      value_of_silver: 10
-    item_name: Long Sword
-    item_decription: A long sword, it's long I guess
-    proficiency_required: martial melee
-    cost: 90
-    weight: '15'
-    magical: 'false'
-    damage_die: 1d10
-    finesse: false
-    heavy: false
-    light: false
-    loading: false
-    short_range: 0
-    long_range: 0
-    reach: false
-    special: false
-    thrown: false
-    two_handed: false
-    versatile: false
-    ammunition: false
-  armour:
-  - !ruby/object:Armour
-    currency: !ruby/object:Currency
-      value_of_gold: 100
-      value_of_silver: 10
-    item_name: Chain Mail
-    item_decription: A bloody bit of chain
-    cost: 123
-    weight: '15'
-    magical: 'false'
-    armour_type: 'false'
-    armor_class: '10'
-    strength_required: '10'
+- intimidation
+- medicine
+- nature
+- perception
+- survival
+- light
+- medium
+- heavy
+abilities:
+  level 1: Where there are swords there are punches
+  level 2: Where there are no swords, there are MORE punches
 spells_storage: !ruby/object:SpellStorage
   spells:
   - !ruby/object:Spell
@@ -337,34 +194,37 @@ spells_storage: !ruby/object:SpellStorage
   - data/spells/Arcane Sword.yaml
   - data/spells/Antimagic Field.yaml
   - data/spells/Arcane Eye.yaml
-spells:
-- Magic Missile
-- Acid Arrow
-character_name: Tia
-race: Dwarf
-character_class: Bard
-experience: 100
-alighnment: Evil
-character_weapon: !ruby/object:Weapon
-  currency: !ruby/object:Currency
-    value_of_gold: 100
-    value_of_silver: 10
-  item_name: Long Sword
-  item_decription: A long sword, it's long I guess
-  proficiency_required: martial melee
-  cost: 90
-  weight: '15'
-  magical: 'false'
-  damage_die: 1d10
-  finesse: false
-  heavy: false
-  light: false
-  loading: false
-  short_range: 0
-  long_range: 0
-  reach: false
-  special: false
-  thrown: false
-  two_handed: false
-  versatile: false
-  ammunition: false
+skills: !ruby/object:Skills
+  strength_based_skills: &1
+  - athletics
+  dexterity_based_skills: &2
+  - acrobatics
+  - slight of hand
+  - stealth
+  intelligence_based_skills: &3
+  - arcana
+  - history
+  - investigation
+  - nature
+  - religion
+  wisdom_based_skills: &4
+  - animal handeling
+  - insight
+  - medicine
+  - perception
+  - survival
+  charisma_based_skills: &5
+  - deception
+  - intimidation
+  - performance
+  - persuasion
+  skills:
+  - *1
+  - *2
+  - *3
+  - *4
+  - *5
+class_name: Fighter
+hit_points_at_first_level: 12 + Con
+hit_points_at_higher_levels: 1d12 + Con
+number_of_skills_to_choose: 2

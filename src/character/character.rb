@@ -45,14 +45,15 @@ class Character < CharacterUtility
 
   def initialize()
     roll_stats()
-    @proficiency = Array.new()
     @class_storage = ClassStorage.new()
-    @expertise = Array.new()
-    @skills = Skills.new()
-    @items = ItemsControl.new()
+    @items = ItemStorage.new()
     @spells_storage = SpellStorage.new()
-    @spells = Array.new()
+
     @character_class = DnDClass.new()
+    @skills = Skills.new()
+    @spells = Array.new()
+    @proficiency = Array.new()
+    @expertise = Array.new()
   end
 
   def roll_stats()

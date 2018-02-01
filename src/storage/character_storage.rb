@@ -30,7 +30,7 @@ class CharacterStorage
 end
 
 # store = CharacterStorage.new()
-# items = ItemsControl.new()
+# items = ItemStorage.new()
 #
 # char = Character.new()
 # char.character_name = "Bilge"

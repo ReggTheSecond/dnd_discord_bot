@@ -14,7 +14,7 @@ class CommandCentre < CommandParsingUtility
     @diceRoller = DiceRoller.new()
     @characterStorage = CharacterStorage.new()
     @spells_storage = SpellStorage.new()
-    @items_storage = ItemsControl.new()
+    @items_storage = ItemStorage.new()
   end
 
   def process_command(command)

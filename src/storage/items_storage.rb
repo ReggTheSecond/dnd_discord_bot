@@ -4,7 +4,7 @@ require_relative '../items/weapon.rb'
 require_relative '../items/armour.rb'
 require "yaml"
 
-class ItemsControl
+class ItemStorage
   attr_accessor :items
   attr_accessor :weapons
   attr_accessor :armour
@@ -124,7 +124,7 @@ class ItemsControl
   end
 end
 
-# item_storage = ItemsControl.new()
+# item_storage = ItemStorage.new()
 # item = Item.new()
 # weapon = Weapon.new()
 # armour = Armour.new()

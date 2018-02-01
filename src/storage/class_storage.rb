@@ -55,49 +55,48 @@ class ClassStorage
   end
 
   def save_archetype_as_YAML(archetype)
-    File.open("data/classes/#{archetype.archetype_name}.yaml", 'w') do |file|
+    File.open("data/classes/class_archetypes/#{archetype.archetype_name}.yaml", 'w') do |file|
         file.puts YAML::dump(archetype)
     end
   end
 
   def load_archetype_as_YAML(archetype)
-    return YAML.load_file("data/classes/#{archetype}.yaml")
+    return YAML.load_file("data/classes/class_archetypes/#{archetype}.yaml")
   end
 end
 
-# store_thing = ClassStorage.new()
+store_thing = ClassStorage.new()
 
-# thing = DnDClass.new()
-# thing.class_name = "Druid"
-# thing.hit_points_at_first_level = "8 + Con"
-# thing.hit_points_at_higher_levels = "1d8 + Con"
-# thing.add_spell("Animate Dead")
-# thing.add_spell("Arcane Eye")
-#
-# thing.add_proficiency("Arcana")
-# thing.add_proficiency("Animal Handling")
-# thing.add_proficiency("Insight")
-# thing.add_proficiency("Medicine")
-# thing.add_proficiency("Nature")
-# thing.add_proficiency("Perception")
-# thing.add_proficiency("Religion")
-# thing.add_proficiency("Survival")
-# thing.add_proficiency("light")
-# thing.add_proficiency("medium")
-#
-# thing.number_of_skills_to_choose = 2
-#
-# thing.abilities["level 1"] = "FIRE, FIRE EVERY WHERE"
-# thing.abilities["level 2"] = "ICE, ICE EVERY WHERE"
-#
+thing = DnDClass.new()
+thing.class_name = "Fighter"
+thing.hit_points_at_first_level = "12 + Con"
+thing.hit_points_at_higher_levels = "1d12 + Con"
+
+thing.add_proficiency("Arcana")
+thing.add_proficiency("Animal Handling")
+thing.add_proficiency("Intimidation")
+thing.add_proficiency("Medicine")
+thing.add_proficiency("Nature")
+thing.add_proficiency("Perception")
+thing.add_proficiency("Survival")
+thing.add_proficiency("light")
+thing.add_proficiency("medium")
+thing.add_proficiency("heavy")
+
+thing.number_of_skills_to_choose = 2
+
+thing.abilities["level 1"] = "Where there are swords there are punches"
+thing.abilities["level 2"] = "Where there are no swords, there are MORE punches"
+
 # puts thing.all_class_abilities()
-#
-# store_thing.classes << thing
-# store_thing.save_dnd_class_as_YAML(thing)
 
-# thing = ClassArchetype.new()
-#
-# thing.archetype_name = "Circle of Dudes"
-# thing.archetype_abilities["level 1"] = "Circle of Jerks"
-#
-# puts thing.all_archetype_abilities()
+store_thing.classes << thing
+store_thing.save_dnd_class_as_YAML(thing)
+
+arch = ClassArchetype.new()
+
+arch.archetype_name = "Punch Dude"
+arch.archetype_abilities["level 1"] = "Dick Punch"
+
+store_thing.save_archetype_as_YAML(arch)
+# puts arch.all_archetype_abilities()

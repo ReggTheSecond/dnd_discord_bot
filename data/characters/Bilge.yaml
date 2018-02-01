@@ -63,7 +63,7 @@ skills: !ruby/object:Skills
   - *3
   - *4
   - *5
-items: !ruby/object:ItemsControl
+items: !ruby/object:ItemStorage
   items:
   - !ruby/object:Item
     currency: !ruby/object:Currency
