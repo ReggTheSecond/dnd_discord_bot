@@ -28,8 +28,10 @@ class ClassStorage
 
   def return_class(desired_class)
     @classes.each do |c_class|
-      if c_class.class_name.downcase == desired_class.downcase
+      if c_class.class_name.downcase.strip == desired_class.downcase.strip
         return c_class
+      else
+        return desired_class
       end
     end
   end

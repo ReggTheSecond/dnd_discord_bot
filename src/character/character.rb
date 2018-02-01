@@ -52,7 +52,7 @@ class Character < CharacterUtility
     @items = ItemsControl.new()
     @spells_storage = SpellStorage.new()
     @spells = Array.new()
-    @character_class = Class.new()
+    @character_class = DnDClass.new()
   end
 
   def roll_stats()
@@ -142,7 +142,6 @@ class Character < CharacterUtility
   end
 
   def set_class(character_class)
-    puts @class_storage.return_class(character_class)
     @character_class = @class_storage.return_class(character_class)
   end
 
@@ -167,15 +166,9 @@ class Character < CharacterUtility
   end
 
   def to_string()
-    return "Name: #{@character_name}\n
-      Race: #{@race}\n
-      Class: #{@character_class.class}\n
-      Strength: #{@strength}\n
-      Constitution: #{@constitution}\n
-      Dexterity: #{@dexterity}\n
-      Intelligence: #{@intelligence}\n
-      Wisdom: #{@wisdom}\n
-      Charisma: #{@charisma}\n
-      Proficiencies: #{@proficiency}\n"
+    return "Name: #{@character_name}      Race: #{@race}      Class: #{@character_class.class_name()}\n
+Strength: #{@strength}      Constitution: #{@constitution}      Dexterity: #{@dexterity}\n
+Intelligence: #{@intelligence}      Wisdom: #{@wisdom}      Charisma: #{@charisma}\n
+Proficiencies: #{@proficiency}\n"
   end
 end

@@ -10,32 +10,38 @@ class CreateCharacterSheet
     @new_character = Character.new()
     roll_attributes?(event)
     name_character(event)
-    sleep 5
+    sleep 8
     choose_races(event)
-    sleep 5
+    sleep 8
     choose_class(event)
-    sleep 5
+    sleep 8
     choose_skills(event)
   end
 
   def name_character(event)
     event.respond "Character Name:"
     event.bot.message(with_text: /^.+/) do |respond_event|
-      @new_character.character_name = respond_event.content.to_s()
+      if @new_character.character_name == nil
+        @new_character.character_name = respond_event.content.to_s()
+      end
     end
   end
 
   def choose_races(event)
     event.respond "Choose a race from amoung - Dwarf, Dragonborn, Elf, Human, Gnome, Half-Elf, Half-Orc, Teifling."
     event.bot.message(with_text: /^.+/) do |respond_event|
+    if @new_character.race == nil
       @new_character.race = respond_event.content.to_s()
+    end
     end
   end
 
   def choose_class(event)
     event.respond "Choose class from amoung - Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, Warlock, Wizard."
     event.bot.message(with_text: /^.+/) do |respond_event|
+    if @new_character.get_class_name == nil
       @new_character.set_class(respond_event.content.to_s())
+    end
     end
   end
 
